@@ -1,0 +1,51 @@
+{
+  "root": true,
+  "env": {
+    "es2022": true,
+    "browser": true,
+    "node": true,
+    "vue/setup-compiler-macros": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:vue/vue3-recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 13,
+    "sourceType": "module"
+  },
+  "overrides": [
+    {
+      "files": ["*.vue"],
+      "parser": "vue-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+      },
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
+  "rules": {
+    "sort-imports": [
+      "error",
+      {
+        "ignoreCase": false,
+        "ignoreDeclarationSort": true,
+        "ignoreMemberSort": false,
+        "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+        "allowSeparatedGroups": false
+      }
+    ],
+    "@typescript-eslint/consistent-type-imports": [
+      "error",
+      { "prefer": "type-imports" }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "vue/multi-word-component-names": "off",
+    "vue/no-v-html": "off"
+  }
+}

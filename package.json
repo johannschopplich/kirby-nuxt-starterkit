@@ -1,0 +1,45 @@
+{
+  "private": true,
+  "packageManager": "pnpm@7.5.0",
+  "scripts": {
+    "dev": "nuxi dev",
+    "build": "nuxi build",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "lint": "eslint \"**/*.{ts,vue}\" --ignore-path .gitignore",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier \"**/*.{css,html,json,md,ts,tsx,vue,yml}\" --write --ignore-path .gitignore",
+    "prepare": "pnpm exec simple-git-hooks"
+  },
+  "lint-staged": {
+    "**/*.{ts,vue}": "eslint --cache --ignore-path .gitignore"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged"
+  },
+  "devDependencies": {
+    "@iconify-json/carbon": "^1.1.6",
+    "@sindresorhus/slugify": "^2.1.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.5",
+    "@typescript-eslint/parser": "^5.30.5",
+    "@vueuse/nuxt": "^8.8.0",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-vue": "^9.2.0",
+    "lint-staged": "^13.0.3",
+    "nuxt": "^3.0.0-rc.4",
+    "nuxt-kql": "^0.9.5",
+    "prettier": "^2.7.1",
+    "simple-git-hooks": "^2.8.0",
+    "typescript": "^4.7.4"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "vue",
+        "webpack",
+        "vite"
+      ]
+    }
+  }
+}
