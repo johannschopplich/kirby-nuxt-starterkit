@@ -1,23 +1,39 @@
 <script setup lang="ts">
-const { data } = await usePhotographyPage()
-const children = computed(() => data.value?.result?.children)
+const { data } = await useKql({
+  query: `kirby.page("home")`,
+  select: {
+    id: true,
+    title: true,
+    // description: true,
+    headline: true,
+    subheading: true,
+  },
+})
+usePage(data.value.result)
+
+const { data: photographyPage } = await usePhotographyPage()
+const albums = computed(() => photographyPage.value?.result?.children)
 </script>
 
 <template>
-  <ul class="home-grid">
-    <li v-for="(item, index) in children" :key="index">
-      <NuxtLink :to="`/${item.id}`">
-        <figure>
-          <img :src="item?.cover?.url ?? item?.images?.[0]?.url" alt="" />
-          <figcaption>
-            <span>
-              <span class="example-name">{{ item.title }}</span>
-            </span>
-          </figcaption>
-        </figure>
-      </NuxtLink>
-    </li>
-  </ul>
+  <div>
+    <AppIntro />
+
+    <ul class="home-grid">
+      <li v-for="(album, index) in albums" :key="index">
+        <NuxtLink :to="`/${album.id}`">
+          <figure>
+            <img :src="album?.cover?.url ?? album?.images?.[0]?.url" alt="" />
+            <figcaption>
+              <span>
+                <span class="example-name">{{ album.title }}</span>
+              </span>
+            </figcaption>
+          </figure>
+        </NuxtLink>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <style scoped>
