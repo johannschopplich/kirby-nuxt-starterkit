@@ -21,7 +21,6 @@ const ratio = computed(() => props.block.content.ratio ?? 'auto')
     <a
       :href="block.content.link || block.content.src"
       :data-contain="block.content.crop === false || undefined"
-      :data-lightbox="block.content.link || undefined"
       :class="[ratio === 'auto' ? 'auto' : 'img']"
       :style="`--w: ${ratio.split('/')[0] ?? 1}; --h: ${
         ratio.split('/')[1] ?? 1

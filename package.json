@@ -23,6 +23,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
     "@vueuse/nuxt": "^8.8.0",
+    "basiclightbox": "^5.0.4",
     "eslint": "^8.19.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.2.0",

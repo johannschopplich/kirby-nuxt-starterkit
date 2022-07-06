@@ -5,7 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   const router = useRouter()
   const route = useRoute()
 
-  vueApp.directive('hoist-html', (el) => {
+  vueApp.directive('hoist', (el) => {
     if (el.tagName === 'TEMPLATE') {
       el.replaceWith(el.content)
     } else {
@@ -13,7 +13,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   })
 
-  vueApp.directive('handle-anchors', {
+  vueApp.directive('internal-links', {
     mounted(el) {
       el.addEventListener('click', handleAnchors)
       // window.addEventListener('hashchange', navigate)

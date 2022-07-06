@@ -41,8 +41,8 @@ function formatDateShort(date: Date) {
   <div>
     <a
       v-if="page.value?.cover || page.value?.images?.[0]"
+      v-lightbox
       :href="page.value?.cover?.url || page.value?.image?.[0]?.url"
-      data-lightbox
       class="img"
       style="--w: 2; --h: 1"
     >

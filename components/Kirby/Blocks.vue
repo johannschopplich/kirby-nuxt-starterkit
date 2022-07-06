@@ -27,7 +27,7 @@ const blockComponents: Partial<
 </script>
 
 <template>
-  <div v-handle-anchors>
+  <div v-internal-links>
     <template v-for="(block, index) in blocks ?? []" :key="index">
       <component :is="blockComponents[block.type]" :block="block" />
     </template>

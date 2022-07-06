@@ -31,7 +31,7 @@ usePage(data.value.result)
       <div class="column" style="--columns: 8">
         <ul class="album-gallery">
           <li v-for="(image, index) in page?.gallery ?? []" :key="index">
-            <a :href="image.url" data-lightbox>
+            <a v-lightbox :href="image.url">
               <figure
                 class="img"
                 :style="`

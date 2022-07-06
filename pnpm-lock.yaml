@@ -6,6 +6,7 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^5.30.5
   '@typescript-eslint/parser': ^5.30.5
   '@vueuse/nuxt': ^8.8.0
+  basiclightbox: ^5.0.4
   eslint: ^8.19.0
   eslint-config-prettier: ^8.5.0
   eslint-plugin-vue: ^9.2.0
@@ -22,6 +23,7 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 5.30.5_6zdoc3rn4mpiddqwhppni2mnnm
   '@typescript-eslint/parser': 5.30.5_4x5o4skxv6sl53vpwefgt23khm
   '@vueuse/nuxt': 8.8.0
+  basiclightbox: 5.0.4
   eslint: 8.19.0
   eslint-config-prettier: 8.5.0_eslint@8.19.0
   eslint-plugin-vue: 9.2.0_eslint@8.19.0
@@ -1391,6 +1393,10 @@ packages:
 
   /base64-js/1.5.1:
     resolution: {integrity: sha512-AKpaYlHn8t4SVbOHCy+b5+KKgvR4vrsD8vbvrbiQJps7fKDTkjkDry6ji0rUJjC0kzbNePLwzxq8iypo41qeWA==}
+    dev: true
+
+  /basiclightbox/5.0.4:
+    resolution: {integrity: sha512-EsuNWmfcFXWZOe0txKXsllYOC7bDpoaVLc4HHHlYKB/roymlZs+FBdLUU6rx2yPpnJZhulwheKdPjqr2k0+NGQ==}
     dev: true
 
   /binary-extensions/2.2.0:
