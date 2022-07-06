@@ -26,7 +26,7 @@ const { width } = useElementSize(figure)
 </script>
 
 <template>
-  <figure>
+  <figure ref="figure">
     <a
       :href="block.content.link || block.content.src"
       :data-contain="block.content.crop === false || undefined"
