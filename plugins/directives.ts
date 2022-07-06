@@ -2,8 +2,6 @@ import { defineNuxtPlugin } from '#app'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { vueApp } = nuxtApp
-  const router = useRouter()
-  const route = useRoute()
 
   /**
    * Directive to replace the current element with its raw HTML contents
@@ -35,8 +33,10 @@ export default defineNuxtPlugin((nuxtApp) => {
   })
 
   function navigate() {
-    if (route.hash) {
-      document.querySelector(route.hash)?.scrollIntoView({ behavior: 'smooth' })
+    if (window.location.hash) {
+      document
+        .querySelector(window.location.hash)
+        ?.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -65,11 +65,13 @@ export default defineNuxtPlugin((nuxtApp) => {
       if (origin !== window.location.origin) return
       event.preventDefault()
 
+      const route = useRoute()
+
       if (hash && (!path || path === route.path)) {
         window.history.replaceState({}, '', link.href)
         navigate()
       } else {
-        router.push({ path, hash })
+        useRouter().push({ path, hash })
       }
     }
   }
