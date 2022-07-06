@@ -20,8 +20,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   ) {
     const link = event.target.closest('a')
-
     if (!link) return
+
     event.preventDefault()
     create(`<img src="${link.href}">`).show()
   }
