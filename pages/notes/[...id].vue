@@ -23,9 +23,10 @@ const { data } = await useKql({
   },
 })
 
-const page = computed(() => data.value.result)
+// Set the current page data for the global page context
 usePage(data.value.result)
 
+const page = computed(() => data.value.result)
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
 
 function formatDateShort(date: Date) {

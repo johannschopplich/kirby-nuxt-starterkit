@@ -15,8 +15,10 @@ const { data } = await useKql({
   },
 })
 
-const page = computed(() => data.value.result)
+// Set the current page data for the global page context
 usePage(data.value.result)
+
+const page = computed(() => data.value.result)
 </script>
 
 <template>

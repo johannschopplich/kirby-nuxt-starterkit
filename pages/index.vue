@@ -9,6 +9,8 @@ const { data } = await useKql({
     subheading: true,
   },
 })
+
+// Set the current page data for the global page context
 usePage(data.value.result)
 
 const { data: photographyPage } = await usePhotographyPage()
