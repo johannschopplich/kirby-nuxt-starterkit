@@ -18,7 +18,6 @@
     "pre-commit": "pnpm exec lint-staged"
   },
   "devDependencies": {
-    "@iconify-json/carbon": "^1.1.6",
     "@sindresorhus/slugify": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^5.30.5",
     "@typescript-eslint/parser": "^5.30.5",
