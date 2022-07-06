@@ -13,8 +13,37 @@ const { data } = await useKql({
 // Set the current page data for the global page context
 usePage(data.value.result)
 
-const { data: photographyPage } = await usePhotographyPage()
-const albums = computed(() => photographyPage.value?.result?.children)
+const { data: photographyData } = await useKql({
+  query: 'kirby.page("photography").children.listed',
+  select: {
+    id: true,
+    title: true,
+    cover: {
+      query: 'page.content.cover.toFile',
+      select: {
+        resized: {
+          query: 'file.resize(1024, 1024)',
+          select: ['url'],
+        },
+        url: true,
+        alt: true,
+      },
+    },
+    image: {
+      query: 'page.images.first',
+      select: {
+        resized: {
+          query: 'file.resize(1024, 1024)',
+          select: ['url'],
+        },
+        url: true,
+        alt: true,
+      },
+    },
+  },
+})
+
+const albums = computed(() => photographyData.value?.result)
 </script>
 
 <template>
@@ -25,7 +54,12 @@ const albums = computed(() => photographyPage.value?.result?.children)
       <li v-for="(album, index) in albums" :key="index">
         <NuxtLink :to="`/${album.id}`">
           <figure>
-            <img :src="album?.cover?.url ?? album?.images?.[0]?.url" alt="" />
+            <img
+              :src="
+                album?.cover?.resized?.url ?? album?.images?.[0]?.resized?.url
+              "
+              :alt="album?.cover?.alt ?? album?.images?.[0]?.alt"
+            />
             <figcaption>
               <span>
                 <span class="example-name">{{ album.title }}</span>

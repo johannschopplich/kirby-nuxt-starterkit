@@ -26,28 +26,3 @@ export function useNotesPage() {
     },
   })
 }
-
-export function usePhotographyPage() {
-  return useKql({
-    query: 'kirby.page("photography")',
-    select: {
-      title: true,
-      // description: true,
-      children: {
-        query: 'page.children.listed',
-        select: {
-          id: true,
-          title: true,
-          cover: {
-            query: 'page.content.cover.toFile',
-            select: ['id', 'url'],
-          },
-          images: {
-            query: 'page.images',
-            select: ['id', 'filename', 'url', 'alt'],
-          },
-        },
-      },
-    },
-  })
-}

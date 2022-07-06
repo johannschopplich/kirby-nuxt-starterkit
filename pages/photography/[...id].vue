@@ -10,7 +10,16 @@ const { data } = await useKql({
     text: true,
     gallery: {
       query: 'page.images.sortBy("sort", "filename")',
-      select: ['id', 'filename', 'width', 'height', 'url', 'alt'],
+      select: {
+        resized: {
+          query: 'file.resize(800)',
+          select: ['url'],
+        },
+        width: true,
+        height: true,
+        url: true,
+        alt: true,
+      },
     },
   },
 })
@@ -41,7 +50,7 @@ const page = computed(() => data.value.result)
                   --h: ${image.height};
                 `"
               >
-                <img :src="image.url" :alt="image.alt" />
+                <img :src="image.resized.url" :alt="image.alt" />
               </figure>
             </a>
           </li>
