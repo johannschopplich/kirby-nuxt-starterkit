@@ -1,12 +1,12 @@
 <p align="center">
-  <img src="https://nuxt-kql.jhnn.dev/logo-shadow.svg" alt="Logo of Kirby Nuxt Starterkit" width="114" height="114">
+  <img src="https://nuxt-kql.jhnn.dev/logo-shadow.svg" alt="Logo of Kirby Nuxt Starter Kit" width="128" height="128">
 </p>
 
 <h3 align="center">Kirby Nuxt Starter Kit</h3>
 
 <p align="center">
   Kirby's sample site – but rewritten headless with Nuxt 3!<br>
-  <a href="https://kirby-nuxt-starterkit.netlify.app"><strong>Explore the starterkit live »</strong></a>
+  <a href="https://kirby-nuxt-starterkit.netlify.app"><strong>Explore the kit live »</strong></a>
 </p>
 
 <br>
