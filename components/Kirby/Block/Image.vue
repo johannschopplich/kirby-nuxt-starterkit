@@ -19,6 +19,10 @@ const style = computed(() => {
   const [w = 1, h = 1] = ratio.value.split('/')
   return { w, h }
 })
+
+// Auto sizes for `srcset` attribute if used
+const figure = ref<HTMLElement | undefined>()
+const { width } = useElementSize(figure)
 </script>
 
 <template>
@@ -31,6 +35,7 @@ const style = computed(() => {
     >
       <img
         :src="block.content.location === 'web' ? block.content.src : image?.url"
+        :sizes="`${width}px`"
         :alt="block.content.alt || image?.alt"
       />
     </a>
