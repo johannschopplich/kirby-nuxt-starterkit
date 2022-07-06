@@ -13,7 +13,12 @@ const image = computed(() =>
   )
 )
 
-const ratio = computed(() => props.block.content.ratio ?? 'auto')
+const ratio = computed(() => props.block.content.ratio || 'auto')
+const style = computed(() => {
+  if (ratio.value === 'auto') return {}
+  const [w = 1, h = 1] = ratio.value.split('/')
+  return { w, h }
+})
 </script>
 
 <template>
@@ -22,9 +27,7 @@ const ratio = computed(() => props.block.content.ratio ?? 'auto')
       :href="block.content.link || block.content.src"
       :data-contain="block.content.crop === false || undefined"
       :class="[ratio === 'auto' ? 'auto' : 'img']"
-      :style="`--w: ${ratio.split('/')[0] ?? 1}; --h: ${
-        ratio.split('/')[1] ?? 1
-      };`"
+      :style="`--w: ${style.w}; --h: ${style.h};`"
     >
       <img
         :src="block.content.location === 'web' ? block.content.src : image?.url"
