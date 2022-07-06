@@ -5,6 +5,11 @@ export default defineNuxtPlugin((nuxtApp) => {
   const router = useRouter()
   const route = useRoute()
 
+  /**
+   * Directive to replace the current element with its raw HTML contents
+   * Especially useful with ` <div v-hoist v-html="html" />` to replace the
+   * wrapping `<div>` element with raw HTML
+   */
   vueApp.directive('hoist', (el) => {
     if (el.tagName === 'TEMPLATE') {
       el.replaceWith(el.content)
@@ -13,6 +18,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     }
   })
 
+  /**
+   * Directive to let the Vue Router handle internal links,
+   * instead of a hard refresh
+   */
   vueApp.directive('internal-links', {
     mounted(el) {
       el.addEventListener('click', handleAnchors)
