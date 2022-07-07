@@ -36,6 +36,9 @@ const { data } = await useKql({
   },
 })
 
+// Set the current page data for the global page context
+usePage(data.value.result)
+
 const albums = computed(() => data.value?.result?.children)
 </script>
 
