@@ -1,5 +1,5 @@
 import { defineNuxtPlugin } from '#app'
-import { create } from 'basiclightbox'
+import basiclightbox from 'basiclightbox'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const { vueApp } = nuxtApp
@@ -23,6 +23,6 @@ export default defineNuxtPlugin((nuxtApp) => {
     if (!link) return
 
     event.preventDefault()
-    create(`<img src="${link.href}">`).show()
+    basiclightbox.create(`<img src="${link.href}">`).show()
   }
 })
