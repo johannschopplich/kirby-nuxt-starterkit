@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data } = await useKql({
-  query: `kirby.page("home")`,
+  query: 'kirby.page("home")',
   select: {
     id: true,
     title: true,

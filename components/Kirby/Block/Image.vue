@@ -14,7 +14,7 @@ const image = computed(() =>
 )
 
 const ratio = computed(() => props.block.content.ratio || 'auto')
-const style = computed(() => {
+const size = computed(() => {
   if (ratio.value === 'auto') return {}
   const [w = 1, h = 1] = ratio.value.split('/')
   return { w, h }
@@ -27,18 +27,19 @@ const { width } = useElementSize(figure)
 
 <template>
   <figure ref="figure">
-    <a
-      :href="block.content.link || block.content.src"
+    <component
+      :is="block.content.link ? 'a' : 'div'"
+      :href="block.content.link"
       :data-contain="block.content.crop === false || undefined"
       :class="[ratio === 'auto' ? 'auto' : 'img']"
-      :style="`--w: ${style.w}; --h: ${style.h};`"
+      :style="`--w: ${size.w}; --h: ${size.h};`"
     >
       <img
         :src="block.content.location === 'web' ? block.content.src : image?.url"
         :sizes="`${width}px`"
         :alt="block.content.alt || image?.alt"
       />
-    </a>
+    </component>
 
     <figcaption
       v-if="block.content.caption"
