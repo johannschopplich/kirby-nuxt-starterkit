@@ -28,6 +28,9 @@ usePage(data.value.result)
 
 const page = computed(() => data.value.result)
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
+const coverUrl = computed(
+  () => page.value?.cover?.url || page.value?.image?.[0]?.url
+)
 
 function formatDateShort(date: Date) {
   return new Intl.DateTimeFormat('en-US', {
@@ -40,18 +43,9 @@ function formatDateShort(date: Date) {
 
 <template>
   <div>
-    <a
-      v-if="page.value?.cover || page.value?.images?.[0]"
-      v-lightbox
-      :href="page.value?.cover?.url || page.value?.image?.[0]?.url"
-      class="img"
-      style="--w: 2; --h: 1"
-    >
-      <img
-        :src="page.value?.cover?.url || page.value?.image?.[0]?.url"
-        alt=""
-      />
-    </a>
+    <div v-if="coverUrl" class="img" style="--w: 2; --h: 1">
+      <img v-zoom :src="coverUrl" alt="" />
+    </div>
 
     <article class="note">
       <header class="note-header h1">

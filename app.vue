@@ -2,7 +2,7 @@
 import { resolveURL } from 'ufo'
 
 import '~/assets/css/main.css'
-import '~/assets/css/lightbox.css'
+import '~/assets/css/medium-zoom.css'
 
 const { baseUrl } = useRuntimeConfig().public
 const site = useSite()
