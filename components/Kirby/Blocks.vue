@@ -15,7 +15,7 @@ defineProps<{
 }>()
 
 const blockComponents: Partial<
-  Record<KirbyBlockType, new (...args: any[]) => ComponentPublicInstance>
+  Record<KirbyBlockType, new () => ComponentPublicInstance>
 > = {
   heading: KirbyBlockHeading,
   image: KirbyBlockImage,
