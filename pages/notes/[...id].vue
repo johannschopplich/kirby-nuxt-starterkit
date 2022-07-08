@@ -29,7 +29,7 @@ usePage(data.value.result)
 const page = computed(() => data.value.result)
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
 const coverUrl = computed(
-  () => page.value?.cover?.url || page.value?.image?.[0]?.url
+  () => page.value?.cover?.url || page.value?.images?.[0]?.url
 )
 
 function formatDateShort(date: Date) {
