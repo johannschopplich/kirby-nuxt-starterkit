@@ -44,7 +44,7 @@ function formatDateShort(date: Date) {
 <template>
   <div>
     <div v-if="coverUrl" class="img" style="--w: 2; --h: 1">
-      <img v-zoom :src="coverUrl" alt="" />
+      <img :src="coverUrl" alt="" />
     </div>
 
     <article class="note">
