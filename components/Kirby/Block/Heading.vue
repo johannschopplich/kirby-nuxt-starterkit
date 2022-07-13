@@ -8,7 +8,11 @@ defineProps<{
 </script>
 
 <template>
-  <component :is="block.content.level" :id="slugify(block.content.text)">
-    <div v-hoist v-html="block.content.text" />
-  </component>
+  <!-- eslint-disable vue/no-v-text-v-html-on-component -->
+  <component
+    :is="block.content.level"
+    :id="slugify(block.content.text)"
+    v-html="block.content.text"
+  />
+  <!-- eslint-enable vue/no-v-text-v-html-on-component -->
 </template>
