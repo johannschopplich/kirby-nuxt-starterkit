@@ -43,7 +43,11 @@ useHead({
     <Meta name="twitter:card" content="summary" />
   </Head>
 
-  <NuxtLayout>
+  <AppHeader />
+
+  <main class="main">
     <NuxtPage />
-  </NuxtLayout>
+  </main>
+
+  <AppFooter />
 </template>
