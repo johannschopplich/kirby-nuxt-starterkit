@@ -9,6 +9,6 @@ defineProps<{
 
 <template>
   <component :is="block.content.level" :id="slugify(block.content.text)">
-    {{ block.content.text }}
+    <div v-hoist v-html="block.content.text" />
   </component>
 </template>
