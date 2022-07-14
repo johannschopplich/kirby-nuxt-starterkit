@@ -49,8 +49,6 @@ pnpm install
 Adapt the relevant environment variables:
 
 ```bash
-# Site base URL for SEO meta data
-NUXT_PUBLIC_BASE_URL=<url-of-your-website>
 # Base URL of the Kirby backend
 KIRBY_BASE_URL=
 # Token for bearer authentication
