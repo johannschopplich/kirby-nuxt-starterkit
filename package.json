@@ -9,7 +9,7 @@
     "lint": "eslint \"**/*.{ts,vue}\" --ignore-path .gitignore",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier \"**/*.{css,html,json,md,ts,tsx,vue,yml}\" --write --ignore-path .gitignore",
-    "prepare": "pnpm exec simple-git-hooks"
+    "postinstall": "simple-git-hooks && nuxi prepare"
   },
   "lint-staged": {
     "**/*.{ts,vue}": "eslint --cache --ignore-path .gitignore"
