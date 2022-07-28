@@ -27,9 +27,7 @@ function span(width: `${string}/${string}`, columns = 12) {
         class="column"
         :style="`--columns: ${span(column.width)}`"
       >
-        <div class="text">
-          <KirbyBlocks :blocks="column.blocks" />
-        </div>
+        <KirbyBlocks :blocks="column.blocks" class="text" />
       </div>
     </section>
   </div>

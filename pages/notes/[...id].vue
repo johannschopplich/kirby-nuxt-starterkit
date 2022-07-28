@@ -55,9 +55,7 @@ function formatDateShort(date: Date) {
         </p>
       </header>
 
-      <div class="note text">
-        <KirbyBlocks :blocks="page?.text ?? []" />
-      </div>
+      <KirbyBlocks :blocks="page?.text ?? []" class="note text" />
 
       <footer class="note-footer">
         <ul v-if="page?.tags" class="note-tags">
