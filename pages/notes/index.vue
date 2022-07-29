@@ -4,9 +4,7 @@ const route = useRoute()
 const { data } = await useNotesPage()
 
 // Set the current page data for the global page context
-usePage(data.value.result)
-
-const page = computed(() => data.value.result)
+const page = setPage(data.value.result)
 const tag = computed(() => route.query.tag as string)
 
 // Filter page children by tags

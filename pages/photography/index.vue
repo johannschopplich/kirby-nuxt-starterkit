@@ -37,9 +37,9 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-usePage(data.value.result)
+const page = setPage(data.value.result)
 
-const albums = computed(() => data.value?.result?.children)
+const albums = computed(() => page.value.children ?? [])
 </script>
 
 <template>
@@ -48,7 +48,7 @@ const albums = computed(() => data.value?.result?.children)
 
     <ul class="grid" style="--gutter: 1.5rem">
       <li
-        v-for="(album, index) in albums ?? []"
+        v-for="(album, index) in albums"
         :key="index"
         class="column"
         style="--columns: 3"

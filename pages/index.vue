@@ -11,7 +11,7 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-usePage(data.value.result)
+setPage(data.value.result)
 
 const { data: photographyData } = await useKql({
   query: 'kirby.page("photography").children.listed',
@@ -43,7 +43,7 @@ const { data: photographyData } = await useKql({
   },
 })
 
-const albums = computed(() => photographyData.value?.result)
+const albums = computed(() => photographyData.value?.result ?? [])
 </script>
 
 <template>

@@ -24,9 +24,8 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-usePage(data.value.result)
+const page = setPage(data.value.result)
 
-const page = computed(() => data.value.result)
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
 const coverUrl = computed(
   () => page.value?.cover?.url || page.value?.images?.[0]?.url
