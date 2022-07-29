@@ -6,7 +6,7 @@ const { data } = await useKql({
   select: {
     id: true,
     title: true,
-    description: true,
+    // description: true,
     layouts: 'page.layout.toLayouts',
     address: 'page.address.kirbytext',
     email: true,

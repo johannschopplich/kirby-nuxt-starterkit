@@ -4,6 +4,7 @@ const { data } = await useKql({
   select: {
     title: true,
     // description: true,
+    subheadline: true,
     children: {
       query: 'page.children.listed',
       select: {

@@ -4,6 +4,7 @@ export function useNotesPage() {
     select: {
       title: true,
       // description: true,
+      subheadline: true,
       text: 'page.text.kirbytext',
       children: {
         query: 'page.children.listed.sortBy("date", "desc")',

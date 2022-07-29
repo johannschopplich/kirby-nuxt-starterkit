@@ -7,6 +7,7 @@ const { data } = await useKql({
     id: true,
     title: true,
     // description: true,
+    subheadline: true,
     text: true,
     gallery: {
       query: 'page.images.sortBy("sort", "filename")',

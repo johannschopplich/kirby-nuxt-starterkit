@@ -6,7 +6,7 @@ const { data } = await useKql({
     title: true,
     // description: true,
     headline: true,
-    subheading: true,
+    subheadline: true,
   },
 })
 
@@ -25,7 +25,6 @@ const { data: photographyData } = await useKql({
           query: 'file.resize(1024, 1024)',
           select: ['url'],
         },
-        url: true,
         alt: true,
       },
     },
@@ -36,7 +35,6 @@ const { data: photographyData } = await useKql({
           query: 'file.resize(1024, 1024)',
           select: ['url'],
         },
-        url: true,
         alt: true,
       },
     },
