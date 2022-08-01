@@ -32,7 +32,7 @@ const page = setCurrentPage(() => data.value.result)
       <div class="grid" style="--gutter: 1.5rem">
         <section v-internal-links class="column text" style="--columns: 4">
           <h3>Address</h3>
-          <div v-hoist v-html="page.address" />
+          <div v-html="page.address" />
         </section>
 
         <section class="column text" style="--columns: 4">

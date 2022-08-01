@@ -7,5 +7,5 @@ defineProps<{
 </script>
 
 <template>
-  <div v-hoist v-html="block.content.text" />
+  <div v-html="block.content.text" />
 </template>
