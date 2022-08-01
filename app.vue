@@ -8,7 +8,7 @@ const origin = process.server
   ? withHttps(useRequestHeaders().host)
   : window.location.origin
 const site = useSite()
-const page = usePage()
+const page = useCurrentPage()
 const route = useRoute()
 
 const title = computed(() =>

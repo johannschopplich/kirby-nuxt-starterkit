@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const page = usePage()
+const page = useCurrentPage()
 </script>
 
 <template>

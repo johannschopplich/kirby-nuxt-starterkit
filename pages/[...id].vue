@@ -31,7 +31,7 @@ if (!data.value?.result) {
 }
 
 // Set the current page data for the global page context
-const page = setPage(data.value.result)
+const page = setCurrentPage(() => data.value.result)
 </script>
 
 <template>

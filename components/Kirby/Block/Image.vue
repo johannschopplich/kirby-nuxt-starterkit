@@ -6,7 +6,7 @@ const props = defineProps<{
   block?: KirbyBlock<'image'>
 }>()
 
-const page = usePage()
+const page = useCurrentPage()
 const image = computed(() =>
   ((page.value?.images ?? []) as KirbyImage[]).find(
     (i) => i.filename === props.block.content.image?.[0]

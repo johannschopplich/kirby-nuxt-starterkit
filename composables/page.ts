@@ -1,21 +1,14 @@
-import { unref } from 'vue'
-import type { Ref } from 'vue'
+import type { MaybeComputedRef } from '@vueuse/core'
 
-/**
- * Access the current page context
- */
-export function usePage() {
+export function useCurrentPage() {
   return useState<Record<string, any>>('kql.page', () => ({}))
 }
 
-/**
- * Set the current page context
- */
-export function setPage<T extends Record<string, any>>(data?: T | Ref<T>) {
-  if (data) {
-    const page = usePage()
-    page.value = unref(data)
-  }
+export function setCurrentPage<T extends Record<string, any>>(
+  data: MaybeComputedRef<T>
+) {
+  const page = useCurrentPage()
+  page.value = resolveUnref(data)
 
-  return computed(() => unref(data))
+  return computed(() => resolveUnref(data))
 }
