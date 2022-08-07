@@ -4,12 +4,15 @@ import { resolveURL, withHttps } from 'ufo'
 import '~/assets/css/main.css'
 import '~/assets/css/medium-zoom.css'
 
-const origin = process.server
-  ? withHttps(useRequestHeaders().host)
-  : window.location.origin
 const site = useSite()
 const page = useCurrentPage()
 const route = useRoute()
+const origin = computed(() => {
+  const { deployUrl } = useRuntimeConfig().public
+  return deployUrl || process.server
+    ? withHttps(useRequestHeaders().host)
+    : window.location.origin
+})
 
 const title = computed(() =>
   page.value?.title
@@ -19,7 +22,7 @@ const title = computed(() =>
 const description = computed(
   () => page.value?.description ?? site.value.description
 )
-const url = computed(() => resolveURL(origin, route.path))
+const url = computed(() => resolveURL(origin.value, route.path))
 
 useHead({
   htmlAttrs: {
