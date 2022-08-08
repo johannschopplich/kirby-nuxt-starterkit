@@ -2,7 +2,7 @@
 import type { KirbyBlock } from '#nuxt-kql'
 
 defineProps<{
-  block?: KirbyBlock<'text'>
+  block: KirbyBlock<'text'>
 }>()
 </script>
 

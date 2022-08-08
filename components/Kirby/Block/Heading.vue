@@ -3,7 +3,7 @@ import slugify from '@sindresorhus/slugify'
 import type { KirbyBlock } from '#nuxt-kql'
 
 defineProps<{
-  block?: KirbyBlock<'heading'>
+  block: KirbyBlock<'heading'>
 }>()
 </script>
 

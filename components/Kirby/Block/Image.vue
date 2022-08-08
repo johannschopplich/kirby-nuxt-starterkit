@@ -3,7 +3,7 @@ import type { KirbyBlock } from '#nuxt-kql'
 import type { KirbyImage } from '~/types'
 
 const props = defineProps<{
-  block?: KirbyBlock<'image'>
+  block: KirbyBlock<'image'>
 }>()
 
 const page = useCurrentPage()
