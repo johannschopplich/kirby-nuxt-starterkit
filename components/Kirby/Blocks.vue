@@ -8,14 +8,14 @@ import {
   KirbyBlockText,
 } from '#components'
 import type { ComponentPublicInstance } from 'vue'
-import type { KirbyBlock, KirbyBlockType } from '#nuxt-kql'
+import type { KirbyBlock } from '#nuxt-kql'
 
 defineProps<{
   blocks: KirbyBlock<string>[]
 }>()
 
 const blockComponents: Partial<
-  Record<KirbyBlockType, new () => ComponentPublicInstance>
+  Record<string, new () => ComponentPublicInstance>
 > = {
   heading: KirbyBlockHeading,
   image: KirbyBlockImage,
