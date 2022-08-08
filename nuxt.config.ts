@@ -15,6 +15,7 @@ export default defineNuxtConfig({
   },
 
   hooks: {
+    // @ts-expect-error: workaround will be removed in the future
     'vite:extendConfig'(config, { isServer }) {
       if (isServer) {
         // Workaround for Netlify issue
@@ -25,6 +26,8 @@ export default defineNuxtConfig({
   },
 
   typescript: {
+    strict: true,
+    typeCheck: 'build',
     shim: false,
   },
 })
