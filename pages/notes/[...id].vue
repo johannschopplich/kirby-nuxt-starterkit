@@ -65,9 +65,13 @@ function formatDateShort(date: Date) {
           </li>
         </ul>
 
-        <time class="note-date" :datetime="page?.published">
+        <time
+          v-if="page?.published"
+          class="note-date"
+          :datetime="page.published"
+        >
           Published on
-          {{ page?.published && formatDateShort(new Date(page?.published)) }}
+          {{ formatDateShort(new Date(page.published)) }}
         </time>
       </footer>
 

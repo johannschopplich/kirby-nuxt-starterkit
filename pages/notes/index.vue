@@ -11,7 +11,9 @@ const tag = computed(() => route.query.tag as string)
 const notes = computed(() => {
   const children = page.value?.children ?? []
   if (!tag.value) return children
-  return children.filter((page) => (page.tags as string[])?.includes(tag.value))
+  return children.filter((page: any) =>
+    (page.tags as string[])?.includes(tag.value)
+  )
 })
 </script>
 

@@ -22,9 +22,13 @@ function formatDateShort(date: Date) {
         </figure>
 
         <h2 class="note-excerpt-title">{{ note?.title }}</h2>
-        <time class="note-excerpt-date" :datetime="note?.published">{{
-          note?.published && formatDateShort(new Date(note?.published))
-        }}</time>
+        <time
+          v-if="note?.published"
+          class="note-excerpt-date"
+          :datetime="note.published"
+        >
+          {{ formatDateShort(new Date(note.published)) }}
+        </time>
       </header>
 
       <div v-if="excerpt" class="note-excerpt-text">
