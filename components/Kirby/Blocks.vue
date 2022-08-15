@@ -6,7 +6,7 @@ import {
   KirbyBlockList,
   KirbyBlockQuote,
   KirbyBlockText,
-  // @ts-expect-error: Will be fixed in v3.0.0-rc.9
+  // @ts-expect-error: To be fixed in Nuxt upstream
 } from '#components'
 import type { ComponentPublicInstance } from 'vue'
 import type { KirbyBlock } from '#nuxt-kql'
