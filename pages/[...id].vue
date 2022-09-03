@@ -13,7 +13,7 @@ const { data: defaultData } = await useKql({
   },
 })
 
-let data = ref<KirbyQueryResponse>(defaultData.value)
+let data = ref<KirbyQueryResponse | null>(defaultData.value)
 
 // Fall back to error page if no page data is found
 if (!data.value?.result) {
@@ -31,7 +31,7 @@ if (!data.value?.result) {
 }
 
 // Set the current page data for the global page context
-const page = setCurrentPage(() => data.value.result)
+const page = setCurrentPage(() => data.value?.result)
 </script>
 
 <template>
