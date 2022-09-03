@@ -10,7 +10,7 @@ export function useCurrentPage<
 export function setCurrentPage<
   T extends Record<string, any> = Record<string, any>
 >(data: MaybeComputedRef<T>) {
-  const _data = computed(() => resolveUnref(data))
+  const _data = computed(() => resolveUnref(data) ?? {})
 
   const page = useCurrentPage()
   page.value = _data.value
