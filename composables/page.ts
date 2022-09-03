@@ -28,7 +28,7 @@ function usePageMeta(page: Record<string, any>) {
   const origin =
     deployUrl ||
     (process.server
-      ? withHttps(useRequestHeaders().host ?? '/')
+      ? withHttps(useRequestHeaders().host || '/')
       : window.location.origin)
 
   const title = computed(() =>
@@ -37,7 +37,7 @@ function usePageMeta(page: Record<string, any>) {
       : site.value.title
   )
   const description = computed(
-    () => page.value?.description ?? site.value.description
+    () => page.value?.description || site.value.description
   )
   const url = computed(() => resolveURL(origin, route.path))
 
