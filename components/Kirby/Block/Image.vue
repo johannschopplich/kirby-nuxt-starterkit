@@ -7,17 +7,19 @@ const props = defineProps<{
 }>()
 
 const page = useCurrentPage()
+
 // Explicitly not using `computed` here
-const image = (page.value?.images as KirbyImage[])?.find(
-  (i) => i.filename === props.block.content.image?.[0]
+const image = page.value?.images?.find(
+  (i: KirbyImage) => i.filename === props.block.content.image?.[0]
 )
 
-const ratio = computed(() => props.block.content.ratio || 'auto')
-const size = computed(() => {
-  if (ratio.value === 'auto') return {}
-  const [w = 1, h = 1] = ratio.value.split('/')
-  return { w, h }
-})
+const ratio = props.block.content.ratio || 'auto'
+let size: { w?: string; h?: string } = {}
+
+if (ratio !== 'auto') {
+  const [w = '1', h = '1'] = ratio.split('/')
+  size = { w, h }
+}
 
 // Auto sizes for `srcset` attribute if used
 const figure = ref<HTMLElement | undefined>()
