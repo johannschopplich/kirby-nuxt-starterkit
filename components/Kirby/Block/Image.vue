@@ -7,10 +7,9 @@ const props = defineProps<{
 }>()
 
 const page = useCurrentPage()
-const image = computed(() =>
-  ((page.value?.images ?? []) as KirbyImage[]).find(
-    (i) => i.filename === props.block.content.image?.[0]
-  )
+// Explicitly not using `computed` here
+const image = (page.value?.images as KirbyImage[])?.find(
+  (i) => i.filename === props.block.content.image?.[0]
 )
 
 const ratio = computed(() => props.block.content.ratio || 'auto')
