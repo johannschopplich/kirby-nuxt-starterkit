@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      deployUrl: '',
+      siteUrl: '',
     },
   },
 

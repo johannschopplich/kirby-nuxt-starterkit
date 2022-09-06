@@ -24,11 +24,12 @@ export function setCurrentPage<
 function usePageMeta(page: Record<string, any>) {
   const site = useSite()
   const route = useRoute()
-  const { deployUrl } = useRuntimeConfig().public
+  const { siteUrl } = useRuntimeConfig().public
   const origin =
-    deployUrl ||
+    siteUrl ||
     (process.server
-      ? withHttps(useRequestHeaders().host || '/')
+      ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        withHttps(useRequestHeaders().host!)
       : window.location.origin)
 
   const title = page?.title
