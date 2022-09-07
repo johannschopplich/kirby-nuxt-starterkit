@@ -41,6 +41,7 @@ function usePageMeta(page: Record<string, any>) {
   useHead({
     title,
     meta: [
+      { rel: 'canonical', href: url },
       { name: 'description', content: description },
       { property: 'og:title', content: title },
       { property: 'og:description', content: description },
