@@ -1,6 +1,12 @@
 <script setup lang="ts">
 import type { KirbyBlock } from '#nuxt-kql'
-import type { KirbyImage } from '~/types'
+
+interface KirbyImage {
+  id: string
+  filename: string
+  url: string
+  alt: string
+}
 
 const props = defineProps<{
   block: KirbyBlock<'image'>

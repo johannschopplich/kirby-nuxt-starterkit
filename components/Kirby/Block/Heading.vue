@@ -9,7 +9,6 @@ defineProps<{
 
 <template>
   <component :is="block.content.level" :id="slugify(block.content.text)">
-    <!-- eslint-disable-next-line vue/no-v-text-v-html-on-component -->
     <span v-html="block.content.text" />
   </component>
 </template>
