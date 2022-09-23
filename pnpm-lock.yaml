@@ -11,7 +11,7 @@ specifiers:
   lint-staged: ^13.0.3
   medium-zoom: ^1.0.6
   nuxt: ^3.0.0-rc.11
-  nuxt-kql: ^0.15.1
+  nuxt-kql: ^0.15.2
   prettier: ^2.7.1
   simple-git-hooks: ^2.8.0
   typescript: ^4.8.3
@@ -28,7 +28,7 @@ devDependencies:
   lint-staged: 13.0.3
   medium-zoom: 1.0.6
   nuxt: 3.0.0-rc.11_irgkl5vooow2ydyo6aokmferha
-  nuxt-kql: 0.15.1
+  nuxt-kql: 0.15.2
   prettier: 2.7.1
   simple-git-hooks: 2.8.0
   typescript: 4.8.3
@@ -3268,8 +3268,8 @@ packages:
       graceful-fs: 4.2.10
     dev: true
 
-  /kirby-fest/0.2.0:
-    resolution: {integrity: sha512-3hTjQ4uADeBWDVbAohkDGmenezAhheMShDxAQVyXLDbvPqv52nzq8tfYUPBh0Rz6kuFs8mBpNTUm7AeGEspLxg==}
+  /kirby-fest/0.3.0:
+    resolution: {integrity: sha512-7MV8L3lwtZHZGWWo+WZCHA0k9LTuCt66T/ejz0aWUvpcTgKKp9TCqHThmkwHK3CSjyJMD/Wp7FfBZST2ljZWow==}
     dev: true
 
   /klona/2.0.5:
@@ -3847,12 +3847,12 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /nuxt-kql/0.15.1:
-    resolution: {integrity: sha512-5KJYpQIVol1HXNqv6sufsD/4EP7RM2zlRyooDARnu9S0lkAzjM+61+JkhARsix2FzIXFO5oO5Drvs9Cb+FDFiA==}
+  /nuxt-kql/0.15.2:
+    resolution: {integrity: sha512-ETQ2tdNjEe7ii8fM5ISFeIWBpREsSTyOApgHSZoUsy6u/adRO37DTnLVmf2jlL/Bjmy03ncjNjIRridF+FuT2Q==}
     dependencies:
       '@nuxt/kit': 3.0.0-rc.11
       defu: 6.1.0
-      kirby-fest: 0.2.0
+      kirby-fest: 0.3.0
       ohash: 0.1.5
       ohmyfetch: 0.4.19
       scule: 0.3.2
