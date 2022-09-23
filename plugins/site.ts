@@ -1,5 +1,3 @@
-import { defineNuxtPlugin } from '#app'
-
 export default defineNuxtPlugin(async () => {
   const site = useSite()
 

@@ -1,4 +1,3 @@
-import { defineNuxtPlugin } from '#app'
 import zoom from 'medium-zoom'
 
 export default defineNuxtPlugin((nuxtApp) => {

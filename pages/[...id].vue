@@ -37,6 +37,6 @@ const page = setCurrentPage(() => data.value?.result)
 <template>
   <article>
     <h1 class="h1">{{ page?.title }}</h1>
-    <div v-internal-links class="text" v-html="page?.text" />
+    <div v-router-links class="text" v-html="page?.text" />
   </article>
 </template>

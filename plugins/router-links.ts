@@ -1,5 +1,3 @@
-import { defineNuxtPlugin } from '#app'
-
 export default defineNuxtPlugin((nuxtApp) => {
   const { vueApp } = nuxtApp
 
@@ -7,7 +5,7 @@ export default defineNuxtPlugin((nuxtApp) => {
    * Directive to let the Vue Router handle internal links,
    * instead of a hard refresh
    */
-  vueApp.directive('internal-links', {
+  vueApp.directive('router-links', {
     mounted(el) {
       el.addEventListener('click', handleAnchors)
       // window.addEventListener('hashchange', navigate)
@@ -52,9 +50,7 @@ export default defineNuxtPlugin((nuxtApp) => {
       if (origin !== window.location.origin) return
       event.preventDefault()
 
-      const route = useRoute()
-
-      if (hash && (!path || path === route.path)) {
+      if (hash && (!path || path === useRoute().path)) {
         window.history.replaceState({}, '', link.href)
         navigate()
       } else {
