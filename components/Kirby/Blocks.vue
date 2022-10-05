@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {
-  KirbyBlockHeading,
-  KirbyBlockImage,
-  KirbyBlockLine,
-  KirbyBlockList,
-  KirbyBlockQuote,
-  KirbyBlockText,
+  LazyKirbyBlockHeading,
+  LazyKirbyBlockImage,
+  LazyKirbyBlockLine,
+  LazyKirbyBlockList,
+  LazyKirbyBlockQuote,
+  LazyKirbyBlockText,
 } from '#components'
 import type { ComponentPublicInstance } from 'vue'
 import type { KirbyBlock } from '#nuxt-kql'
@@ -17,12 +17,12 @@ defineProps<{
 const blockComponents: Partial<
   Record<string, new () => ComponentPublicInstance>
 > = {
-  heading: KirbyBlockHeading,
-  image: KirbyBlockImage,
-  line: KirbyBlockLine,
-  list: KirbyBlockList,
-  quote: KirbyBlockQuote,
-  text: KirbyBlockText,
+  heading: LazyKirbyBlockHeading,
+  image: LazyKirbyBlockImage,
+  line: LazyKirbyBlockLine,
+  list: LazyKirbyBlockList,
+  quote: LazyKirbyBlockQuote,
+  text: LazyKirbyBlockText,
 }
 </script>
 
