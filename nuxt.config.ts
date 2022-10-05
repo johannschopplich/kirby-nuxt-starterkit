@@ -8,7 +8,6 @@ export default defineNuxtConfig({
   },
 
   kql: {
-    prefix: 'api/kql',
     auth: 'bearer',
   },
 
