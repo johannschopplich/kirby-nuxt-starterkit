@@ -11,6 +11,13 @@ export default defineNuxtConfig({
     auth: 'bearer',
   },
 
+  nitro: {
+    prerender: {
+      // Prerender the index page
+      routes: ['/'],
+    },
+  },
+
   typescript: {
     strict: true,
     // Recommended: type check in dev and on build
