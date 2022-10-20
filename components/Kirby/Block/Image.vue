@@ -12,7 +12,7 @@ const props = defineProps<{
   block: KirbyBlock<'image'>
 }>()
 
-const page = useCurrentPage()
+const page = usePageData()
 
 // Explicitly not using `computed` here
 const image = page.value?.images?.find(

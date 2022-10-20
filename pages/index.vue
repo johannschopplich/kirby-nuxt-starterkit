@@ -11,7 +11,7 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-setCurrentPage(() => data.value?.result)
+storePageData(() => data.value?.result)
 
 const { data: photographyData } = await useKql({
   query: 'kirby.page("photography").children.listed',

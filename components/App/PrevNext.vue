@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const page = useCurrentPage()
+const page = usePageData()
 const { data } = await useNotesPage()
 const children = computed(() => data.value?.result?.children)
 
