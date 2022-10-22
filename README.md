@@ -35,8 +35,8 @@ Before getting started, please make sure you have installed the recommended setu
 - **Node.js**<sup>\*</sup> (v16, the latest LTS version) 👉 [[Download](https://nodejs.org/en/download/)]
 - **pnpm**<sup>\*</sup> (the fast and disk space efficient package manager) 👉 [[Download](https://pnpm.io/installation)]
 - **Visual Studio Code** 👉 [[Download](https://code.visualstudio.com/)]
-- **Volar Extension** 👉 [[Download](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar)]
-  - Enable [**Take Over Mode**](https://vuejs.org/guide/typescript/overview.html#takeover-mode)
+- **Volar Extension** 👉 [[Download](https://marketplace.visualstudio.com/items?itemName=Vue.volar)]
+  - Enable [**Take Over Mode**](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode)
 
 ## Setup
 
@@ -78,7 +78,7 @@ Check out the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
 
 ### Are There Any Drawbacks?
 
-Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. It's fine for my usecase. Still a lot faster than WordPress etc. 😉
+Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://github.com/johannschopplich/kirby-nuxt-starterkit/blob/16110e359d48d2f94f1db497d11a1c2d8f9e7b44/nuxt.config.ts#L15).
 
 ### What's Kirby?
 
