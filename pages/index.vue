@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const { data } = await useKql({
-  query: 'kirby.page("home")',
+  query: 'page("home")',
   select: {
     id: true,
     title: true,
@@ -14,7 +14,7 @@ const { data } = await useKql({
 storePageData(() => data.value?.result)
 
 const { data: photographyData } = await useKql({
-  query: 'kirby.page("photography").children.listed',
+  query: 'page("photography").children.listed',
   select: {
     id: true,
     title: true,

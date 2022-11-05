@@ -1,6 +1,6 @@
 export function useNotesPage() {
   return useKql({
-    query: 'kirby.page("notes")',
+    query: 'page("notes")',
     select: {
       title: true,
       // description: true,

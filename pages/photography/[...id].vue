@@ -2,7 +2,7 @@
 const route = useRoute()
 
 const { data } = await useKql({
-  query: `kirby.page("${route.path}")`,
+  query: `page("${route.path}")`,
   select: {
     id: true,
     title: true,
