@@ -1,6 +1,6 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.14.2",
+  "packageManager": "pnpm@7.16.1",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -15,23 +15,23 @@
     "**/*.{ts,vue}": "eslint --cache --ignore-path .gitignore"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm exec lint-staged"
+    "pre-commit": "npx lint-staged"
   },
   "devDependencies": {
     "@sindresorhus/slugify": "^2.1.1",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
-    "@vueuse/nuxt": "^9.4.0",
-    "eslint": "^8.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "@vueuse/nuxt": "^9.5.0",
+    "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.7.0",
     "lint-staged": "^13.0.3",
-    "medium-zoom": "^1.0.6",
-    "nuxt": "^3.0.0-rc.13",
-    "nuxt-kql": "^0.21.12",
+    "medium-zoom": "^1.0.8",
+    "nuxt": "^3.0.0",
+    "nuxt-kql": "^0.22.1",
     "prettier": "^2.7.1",
     "simple-git-hooks": "^2.8.1",
-    "typescript": "^4.8.4",
+    "typescript": "^4.9.3",
     "vue-tsc": "^1.0.9"
   },
   "pnpm": {

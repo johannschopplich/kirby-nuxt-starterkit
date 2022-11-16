@@ -3,7 +3,7 @@ import type { KirbyBlock } from '#nuxt-kql'
 
 interface KirbyImage {
   id: string
-  filename: string
+  uuid: string
   url: string
   alt: string
 }
@@ -16,7 +16,7 @@ const page = usePageData()
 
 // Explicitly not using `computed` here
 const image = page.value?.images?.find(
-  (i: KirbyImage) => i.filename === props.block.content.image?.[0]
+  ({ uuid }: KirbyImage) => uuid === props.block.content.image?.[0]
 )
 
 const ratio = props.block.content.ratio || 'auto'

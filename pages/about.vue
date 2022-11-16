@@ -14,7 +14,7 @@ const { data } = await useKql({
     social: 'page.social.toStructure',
     images: {
       query: 'page.images',
-      select: ['id', 'filename', 'url', 'alt'],
+      select: ['id', 'uuid', 'url', 'alt'],
     },
   },
 })

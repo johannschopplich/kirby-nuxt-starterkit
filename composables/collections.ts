@@ -20,7 +20,7 @@ export function useNotesPage() {
           },
           images: {
             query: 'page.images',
-            select: ['id', 'filename', 'url', 'alt'],
+            select: ['id', 'uuid', 'url', 'alt'],
           },
         },
       },

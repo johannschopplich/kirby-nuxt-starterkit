@@ -28,7 +28,7 @@ const blockComponents: Partial<
 
 <template>
   <div v-router-links>
-    <template v-for="(block, index) in blocks ?? []" :key="index">
+    <template v-for="(block, index) in blocks" :key="index">
       <component :is="blockComponents[block.type]" :block="block" />
     </template>
   </div>

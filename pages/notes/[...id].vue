@@ -18,7 +18,7 @@ const { data } = await useKql({
     // Required for image blocks and also for the cover fallback
     images: {
       query: 'page.images',
-      select: ['id', 'filename', 'url', 'alt'],
+      select: ['id', 'uuid', 'url', 'alt'],
     },
   },
 })
