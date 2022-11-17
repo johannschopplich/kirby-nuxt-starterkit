@@ -28,25 +28,13 @@ This is my best practice solution to build a Nuxt 3 based frontend on top of Kir
 - 🔢 Pre-configured [VSCode settings](./.vscode/settings.json)
 - 🔖 And much more!
 
-## Prerequisites
+## Usage
 
-Before getting started, please make sure you have installed the recommended setup.
+### Prerequisites
 
-- **Node.js**<sup>\*</sup> (v16, the latest LTS version) 👉 [[Download](https://nodejs.org/en/download/)]
-- **pnpm**<sup>\*</sup> (the fast and disk space efficient package manager) 👉 [[Download](https://pnpm.io/installation)]
-- **Visual Studio Code** 👉 [[Download](https://code.visualstudio.com/)]
-- **Volar Extension** 👉 [[Download](https://marketplace.visualstudio.com/items?itemName=Vue.volar)]
-  - Enable [**Take Over Mode**](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode)
-
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-pnpm install
-```
-
-Adapt the relevant environment variables:
+1. Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable` (use `npm i -g corepack` for Node.js < 16.10)
+2. Install dependencies using `pnpm install`
+3. Adapt the relevant environment variables:
 
 ```bash
 # Base URL of the Kirby backend
@@ -56,23 +44,18 @@ KIRBY_BASE_URL=
 KIRBY_API_TOKEN=
 ```
 
-## Development
+### Development
 
-Start the development server on [localhost:3000](http://localhost:3000):
+1. Start the development server using `pnpm run dev`
+2. Visit [localhost:3000](http://localhost:3000/)
 
-```bash
-pnpm dev
-```
+> ℹ️ Enable [Take Over Mode](https://vuejs.org/guide/typescript/overview.html#takeover-mode) in Visual Studio Code.
 
-## Production
+### Production
 
-Build the application for production:
+Build the application for production with `pnpm build`.
 
-```bash
-pnpm build
-```
-
-Check out the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment).
 
 ## FAQ
 
