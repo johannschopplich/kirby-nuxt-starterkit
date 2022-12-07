@@ -26,7 +26,7 @@
     "lint-staged": "^13.1.0",
     "medium-zoom": "^1.0.8",
     "nuxt": "^3.0.0",
-    "nuxt-kql": "^0.24.0",
+    "nuxt-kql": "^0.24.1",
     "prettier": "^2.8.0",
     "simple-git-hooks": "^2.8.1",
     "typescript": "^4.9.3",

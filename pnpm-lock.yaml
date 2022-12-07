@@ -9,7 +9,7 @@ specifiers:
   lint-staged: ^13.1.0
   medium-zoom: ^1.0.8
   nuxt: ^3.0.0
-  nuxt-kql: ^0.24.0
+  nuxt-kql: ^0.24.1
   prettier: ^2.8.0
   simple-git-hooks: ^2.8.1
   typescript: ^4.9.3
@@ -24,7 +24,7 @@ devDependencies:
   lint-staged: 13.1.0
   medium-zoom: 1.0.8
   nuxt: 3.0.0_s5ps7njkmjlaqajutnox5ntcla
-  nuxt-kql: 0.24.0
+  nuxt-kql: 0.24.1
   prettier: 2.8.0
   simple-git-hooks: 2.8.1
   typescript: 4.9.3
@@ -3863,8 +3863,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /nuxt-kql/0.24.0:
-    resolution: {integrity: sha512-7Bmn0QV2MP0HqRmaQkkEfRfJLgoMmN9Nv4sX6M76iq053eUIq16j6p/gtM6MdoK7VJGn8NCoVW0n61dkc834ZQ==}
+  /nuxt-kql/0.24.1:
+    resolution: {integrity: sha512-T1o9BAALqvL5v+HgJKXfI2BgoVVDJPadaQd/VQ2904EVajG4EYfAQXHU32nqMtgVa892w4uqGmgDWXLetcFS4g==}
     dependencies:
       '@nuxt/kit': 3.0.0
       '@vueuse/core': 9.6.0
