@@ -9,6 +9,9 @@ export default defineNuxtConfig({
 
   kql: {
     auth: 'bearer',
+    server: {
+      cache: true,
+    },
   },
 
   nitro: {
