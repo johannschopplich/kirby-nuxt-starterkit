@@ -9,8 +9,8 @@ specifiers:
   lint-staged: ^13.1.0
   medium-zoom: ^1.0.8
   nuxt: ^3.0.0
-  nuxt-kql: ^0.24.1
-  prettier: ^2.8.0
+  nuxt-kql: ^0.24.2
+  prettier: ^2.8.1
   simple-git-hooks: ^2.8.1
   typescript: ^4.9.3
   vue-tsc: ^1.0.11
@@ -24,8 +24,8 @@ devDependencies:
   lint-staged: 13.1.0
   medium-zoom: 1.0.8
   nuxt: 3.0.0_s5ps7njkmjlaqajutnox5ntcla
-  nuxt-kql: 0.24.1
-  prettier: 2.8.0
+  nuxt-kql: 0.24.2
+  prettier: 2.8.1
   simple-git-hooks: 2.8.1
   typescript: 4.9.3
   vue-tsc: 1.0.11_typescript@4.9.3
@@ -3863,8 +3863,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /nuxt-kql/0.24.1:
-    resolution: {integrity: sha512-T1o9BAALqvL5v+HgJKXfI2BgoVVDJPadaQd/VQ2904EVajG4EYfAQXHU32nqMtgVa892w4uqGmgDWXLetcFS4g==}
+  /nuxt-kql/0.24.2:
+    resolution: {integrity: sha512-JK/jphS4TUeZ/kPe9tixBu+w9OIbxrsajqcEDybxGJH0hm6IKUqIrMPcbBf+dERW3ipBRyuuactlyffdDwOhqA==}
     dependencies:
       '@nuxt/kit': 3.0.0
       '@vueuse/core': 9.6.0
@@ -4509,8 +4509,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/2.8.0:
-    resolution: {integrity: sha512-9Lmg8hTFZKG0Asr/kW9Bp8tJjRVluO8EJQVfY2T7FMw9T5jy4I/Uvx0Rca/XWf50QQ1/SS48+6IJWnrb+2yemA==}
+  /prettier/2.8.1:
+    resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
