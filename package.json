@@ -1,13 +1,13 @@
 {
   "private": true,
-  "packageManager": "pnpm@7.18.0",
+  "packageManager": "pnpm@7.18.1",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
     "generate": "nuxi generate",
     "preview": "nuxi preview",
-    "lint": "eslint \"**/*.{ts,vue}\" --ignore-path .gitignore",
-    "lint:fix": "npm run lint -- --fix",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier \"**/*.{css,html,json,md,ts,tsx,vue,yml}\" --write --ignore-path .gitignore",
     "postinstall": "simple-git-hooks && nuxi prepare"
   },
@@ -18,17 +18,15 @@
     "pre-commit": "npx lint-staged"
   },
   "devDependencies": {
+    "@nuxt/eslint-config": "^0.1.1",
     "@sindresorhus/slugify": "^2.1.1",
-    "@typescript-eslint/eslint-plugin": "^5.45.1",
-    "@typescript-eslint/parser": "^5.45.1",
     "@vueuse/nuxt": "^9.6.0",
     "eslint": "^8.29.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-vue": "^9.8.0",
     "lint-staged": "^13.1.0",
     "medium-zoom": "^1.0.8",
     "nuxt": "^3.0.0",
-    "nuxt-kql": "^0.23.3",
+    "nuxt-kql": "^0.24.0",
     "prettier": "^2.8.0",
     "simple-git-hooks": "^2.8.1",
     "typescript": "^4.9.3",

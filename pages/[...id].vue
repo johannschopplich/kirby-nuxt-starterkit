@@ -13,7 +13,7 @@ const { data: defaultData } = await useKql({
   },
 })
 
-let data = ref<KirbyQueryResponse | null>(defaultData.value)
+const data = ref<KirbyQueryResponse | null>(defaultData.value)
 
 // Fall back to error page if no page data is found
 if (!data.value?.result) {
