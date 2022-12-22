@@ -1,9 +1,11 @@
+import type { FetchError } from 'ofetch'
+
 export default defineNuxtPlugin(async () => {
   const site = useSite()
 
-  if (Object.keys(site.value).length) return
-
   try {
+    // Response will be cached in payload by default, thus no need to
+    // handle server/client side differently
     const data = await $kql({
       query: 'site',
       select: {
@@ -18,6 +20,6 @@ export default defineNuxtPlugin(async () => {
 
     site.value = data?.result || {}
   } catch (e) {
-    console.error('Error loading site data:', (e as Error).message)
+    console.error('Error loading site data:', (e as FetchError).message)
   }
 })
