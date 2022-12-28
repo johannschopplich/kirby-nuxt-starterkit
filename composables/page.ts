@@ -25,8 +25,7 @@ export function storePageData<
   const origin =
     siteUrl ||
     (process.server
-      ? // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        withHttps(useRequestHeaders().host!)
+      ? withHttps(useRequestHeaders().host!)
       : window.location.origin)
 
   watch(
