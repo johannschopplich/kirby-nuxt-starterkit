@@ -4,21 +4,19 @@ import type { MaybeComputedRef } from '@vueuse/core'
 /**
  * Returns the currently active page
  */
-export function usePageData<
-  T extends Record<string, any> = Record<string, any>
->() {
+export function usePage<T extends Record<string, any> = Record<string, any>>() {
   return useState<T>('kql.page', () => ({} as T))
 }
 
 /**
  * Sets the currently active page
  */
-export function storePageData<
-  T extends Record<string, any> = Record<string, any>
->(data: MaybeComputedRef<T>) {
+export function setPage<T extends Record<string, any> = Record<string, any>>(
+  data: MaybeComputedRef<T>
+) {
   const _data = computed(() => resolveUnref(data))
   const site = useSite()
-  const page = usePageData<T>()
+  const page = usePage<T>()
 
   const { siteUrl } = useRuntimeConfig().public
   const route = useRoute()

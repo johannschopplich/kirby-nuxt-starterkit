@@ -1,10 +1,8 @@
 <script setup lang="ts">
 import type { KirbyQueryResponse } from '#nuxt-kql'
 
-const route = useRoute()
-
 const { data: defaultData } = await useKql({
-  query: `page("${route.path}")`,
+  query: `page("${useRoute().path}")`,
   select: {
     id: true,
     title: true,
@@ -31,7 +29,7 @@ if (!data.value?.result) {
 }
 
 // Set the current page data for the global page context
-const page = storePageData(() => data.value?.result)
+const page = setPage(() => data.value?.result)
 </script>
 
 <template>

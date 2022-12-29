@@ -1,8 +1,6 @@
 <script setup lang="ts">
-const route = useRoute()
-
 const { data } = await useKql({
-  query: `page("${route.path}")`,
+  query: `page("${useRoute().path}")`,
   select: {
     id: true,
     title: true,
@@ -20,7 +18,7 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-const page = storePageData(() => data.value?.result)
+const page = setPage(() => data.value?.result)
 </script>
 
 <template>
