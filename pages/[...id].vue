@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import type { KirbyQueryResponse } from '#nuxt-kql'
 
-const data = ref((await usePageDataById(useRoute().path)).value)
+const data = ref(await usePageDataById(useRoute().path))
 
 // Fall back to error page if no page data is found
 if (!data.value?.result) {
-  data.value = (await usePageDataById('error')).value
+  data.value = await usePageDataById('error')
 }
 
 // Set the current page data for the global page context
@@ -21,7 +21,8 @@ async function usePageDataById<T = any>(id: string) {
       text: 'page.text.kirbytext',
     },
   })
-  return data
+
+  return unref(data)
 }
 </script>
 
