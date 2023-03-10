@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const page = usePage()
+// Explicitly not using `computed` here to avoid new page's content being
+// rendered before the new page is visited
+const page = usePage().value
 </script>
 
 <template>
