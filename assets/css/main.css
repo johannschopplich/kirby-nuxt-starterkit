@@ -90,17 +90,6 @@ small {
   cursor: pointer;
 }
 
-.menu {
-  display: flex;
-}
-.menu a {
-  padding: 1rem;
-  display: block;
-}
-.menu a[aria-current] {
-  text-decoration: underline;
-}
-
 .social {
   display: flex;
   padding: 0 0.5rem;
@@ -315,53 +304,6 @@ hr {
   line-height: 1.5em;
 }
 
-.footer {
-  padding: 9rem 0 6rem;
-  line-height: 1.5em;
-}
-.footer:before {
-  content: '';
-  display: block;
-  width: 1.5rem;
-  height: 2px;
-  background: var(--color-black);
-  margin-bottom: 1.5rem;
-}
-
-.footer h2 {
-  font-weight: 600;
-  margin-bottom: 0.75rem;
-}
-.footer ul,
-.footer p {
-  color: var(--color-text-grey);
-}
-.footer p {
-  max-width: 15rem;
-}
-.footer a:hover {
-  color: var(--color-text);
-}
-
-.map {
-  --w: 2;
-  --h: 1;
-  padding-bottom: calc(100% / var(--w) * var(--h));
-  position: relative;
-  overflow: hidden;
-  background: var(--color-black);
-}
-.map iframe {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
 .margin-s {
   margin-bottom: 0.75rem;
 }
@@ -389,40 +331,4 @@ hr {
   .grid > .column {
     grid-column: span var(--columns);
   }
-}
-
-.pagination {
-  display: flex;
-  padding-top: 6rem;
-}
-.pagination > span {
-  color: var(--color-text-grey);
-}
-.pagination > * {
-  padding: 0.5rem;
-  width: 3rem;
-  text-align: center;
-  border: 2px solid currentColor;
-  margin-right: 1.5rem;
-}
-.pagination > a:hover {
-  background: var(--color-black);
-  color: var(--color-white);
-  border-color: var(--color-black);
-}
-
-.note-excerpt {
-  line-height: 1.5em;
-}
-.note-excerpt header {
-  margin-bottom: 1.5rem;
-}
-.note-excerpt figure {
-  margin-bottom: 0.5rem;
-}
-.note-excerpt-title {
-  font-weight: 600;
-}
-.note-excerpt-date {
-  color: var(--color-text-grey);
 }

@@ -17,7 +17,7 @@ const listedChildren = computed(() =>
       <NuxtLink
         v-for="item in listedChildren"
         :key="item.id"
-        :to="{ path: `/${item.id}` }"
+        :to="`/${item.id}`"
         :aria-current="
           route.path.startsWith(`/${item.id}`) ? 'page' : undefined
         "
@@ -29,3 +29,16 @@ const listedChildren = computed(() =>
     </nav>
   </header>
 </template>
+
+<style scoped>
+.menu {
+  display: flex;
+}
+.menu a {
+  padding: 1rem;
+  display: block;
+}
+.menu a[aria-current] {
+  text-decoration: underline;
+}
+</style>

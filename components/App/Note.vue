@@ -37,3 +37,21 @@ function formatDateShort(date: Date) {
     </NuxtLink>
   </article>
 </template>
+
+<style scoped>
+.note-excerpt {
+  line-height: 1.5em;
+}
+.note-excerpt header {
+  margin-bottom: 1.5rem;
+}
+.note-excerpt figure {
+  margin-bottom: 0.5rem;
+}
+.note-excerpt-title {
+  font-weight: 600;
+}
+.note-excerpt-date {
+  color: var(--color-text-grey);
+}
+</style>
