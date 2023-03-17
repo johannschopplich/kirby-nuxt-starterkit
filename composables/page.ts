@@ -1,4 +1,4 @@
-import { resolveURL, withHttps } from 'ufo'
+import { joinURL } from 'ufo'
 import type { MaybeComputedRef } from '@vueuse/core'
 
 /**
@@ -14,17 +14,10 @@ export function usePage<T extends Record<string, any> = Record<string, any>>() {
 export function setPage<T extends Record<string, any> = Record<string, any>>(
   data: MaybeComputedRef<T>
 ) {
+  const { siteUrl } = useRuntimeConfig().public
   const _data = computed(() => resolveUnref(data))
   const site = useSite()
   const page = usePage<T>()
-
-  const { siteUrl } = useRuntimeConfig().public
-  const route = useRoute()
-  const origin =
-    siteUrl ||
-    (process.server
-      ? withHttps(useRequestHeaders().host!)
-      : window.location.origin)
 
   watch(
     _data,
@@ -35,7 +28,7 @@ export function setPage<T extends Record<string, any> = Record<string, any>>(
         ? `${value?.title} – ${site.value.title}`
         : site.value.title
       const description = value?.description || site.value.description
-      const url = resolveURL(origin, route.path)
+      const url = joinURL(siteUrl, useRoute().path)
 
       // Store page data
       page.value = value
