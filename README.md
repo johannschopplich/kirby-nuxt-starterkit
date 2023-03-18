@@ -13,9 +13,7 @@
 
 # Kirby Nuxt Starterkit
 
-This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt 3. The content is fetched with the [`nuxt-kql`](https://nuxt-kql.jhnn.dev) module from a [headless Kirby](https://github.com/johannschopplich/kirby-headless-starter) instance.
-
-This is my best practice solution to build a Nuxt 3 based frontend on top of Kirby in headless mode.
+This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt 3. The content is fetched using the [`nuxt-kql`](https://nuxt-kql.jhnn.dev) module from [`kirby-headless-starter`](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance instance.
 
 ## Key Features
 
