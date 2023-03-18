@@ -5,7 +5,7 @@
 <h3 align="center">Kirby Nuxt Starter Kit</h3>
 
 <p align="center">
-  Kirby's sample site – but rewritten in Nuxt 3!<br>
+  Kirby's sample site – but rewritten in Nuxt 3<br>
   <a href="https://kirby-nuxt-starterkit.netlify.app"><strong>Explore the kit live »</strong></a>
 </p>
 
