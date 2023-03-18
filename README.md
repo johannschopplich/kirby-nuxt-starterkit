@@ -40,7 +40,7 @@ This is my best practice solution to build a Nuxt 3 based frontend on top of Kir
 # Base URL of the Kirby backend
 KIRBY_BASE_URL=
 # Token for bearer authentication
-# See https://github.com/johannschopplich/kirby-headless-starter#bearer-token
+# See https://github.com/johannschopplich/kirby-headless-starter#private-vs-public-api
 KIRBY_API_TOKEN=
 ```
 
@@ -61,7 +61,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ### Are There Any Drawbacks?
 
-Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://github.com/johannschopplich/kirby-nuxt-starterkit/blob/16110e359d48d2f94f1db497d11a1c2d8f9e7b44/nuxt.config.ts#L15).
+Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://github.com/johannschopplich/kirby-nuxt-starterkit/blob/8484d7890795919ef0b968b4cc4e9d00b7e0b84a/nuxt.config.ts#L20).
 
 ### What's Kirby?
 
