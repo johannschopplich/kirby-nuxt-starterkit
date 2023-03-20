@@ -1,3 +1,5 @@
+import { siteQuery } from './queries'
+
 export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', 'nuxt-kql'],
 
@@ -9,8 +11,14 @@ export default defineNuxtConfig({
 
   kql: {
     auth: 'bearer',
+    prefetch: {
+      // Currently only used to infer the type of the `site` query
+      kirbySite: siteQuery,
+    },
+    // Optionally, cache the queries on the server for an hour
     server: {
-      cache: true,
+      // cache: true,
+      // maxAge: 60 * 60,
     },
   },
 

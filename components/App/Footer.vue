@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const site = useSite()
 const listedChildren = computed(() =>
-  (site.value?.children ?? []).filter((i: Record<string, any>) => i.isListed)
+  (site.value?.children ?? []).filter((i) => i.isListed)
 )
 </script>
 
