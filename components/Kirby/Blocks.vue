@@ -7,16 +7,15 @@ import {
   LazyKirbyBlockQuote,
   LazyKirbyBlockText,
 } from '#components'
-import type { ComponentPublicInstance } from 'vue'
 import type { KirbyBlock } from '#nuxt-kql'
 
 defineProps<{
   blocks: KirbyBlock<string>[]
 }>()
 
-const blockComponents: Partial<
-  Record<string, new () => ComponentPublicInstance>
-> = {
+type Component = abstract new (...args: any) => any
+
+const blockComponents: Partial<Record<string, Component>> = {
   heading: LazyKirbyBlockHeading,
   image: LazyKirbyBlockImage,
   line: LazyKirbyBlockLine,
