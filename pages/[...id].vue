@@ -3,13 +3,14 @@ import type { KirbyQueryResponse } from '#nuxt-kql'
 
 const data = ref(await usePageDataById(useRoute().path))
 
-// Fall back to error page if no page data is found
+// If page content is empty, load the error page
 if (!data.value?.result) {
   data.value = await usePageDataById('error')
 }
 
 // Set the current page data for the global page context
-const page = setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
 
 async function usePageDataById<T = any>(id: string) {
   const { data } = await useKql<KirbyQueryResponse<T>>({
@@ -17,6 +18,7 @@ async function usePageDataById<T = any>(id: string) {
     select: {
       id: true,
       title: true,
+      intendedTemplate: true,
       // description: true,
       text: 'page.text.kirbytext',
     },

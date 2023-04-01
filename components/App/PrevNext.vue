@@ -1,23 +1,10 @@
 <script setup lang="ts">
-const page = usePage()
+// Explicitly not using `computed` here
+const page = usePage().value
+
 const { data } = await useNotesPage()
-const children = computed(() => data.value?.result?.children)
-
-// Get the next page
-const nextPage = computed(() => {
-  const index = children.value?.findIndex(
-    (item: Record<string, any>) => item.id === page.value?.id
-  )
-  return children.value?.[index + 1]
-})
-
-// Get the previous page
-const prevPage = computed(() => {
-  const index = children.value?.findIndex(
-    (item: Record<string, any>) => item.id === page.value?.id
-  )
-  return children.value?.[index - 1]
-})
+const children = data.value?.result?.children
+const pageIndex = children?.findIndex(({ id }: any) => id === page?.id)
 </script>
 
 <template>
@@ -25,8 +12,16 @@ const prevPage = computed(() => {
     <h2 class="h2">Keep on reading</h2>
 
     <div class="autogrid" style="--gutter: 1.5rem">
-      <AppNote v-if="nextPage" :note="nextPage" :excerpt="false" />
-      <AppNote v-if="prevPage" :note="prevPage" :excerpt="false" />
+      <AppNote
+        v-if="pageIndex !== undefined && pageIndex > 0"
+        :note="children[pageIndex - 1]"
+        :excerpt="false"
+      />
+      <AppNote
+        v-if="pageIndex !== undefined && pageIndex < children.length - 1"
+        :note="children[pageIndex + 1]"
+        :excerpt="false"
+      />
     </div>
   </nav>
 </template>

@@ -2,7 +2,9 @@
 const { data } = await useKql({
   query: 'page("photography")',
   select: {
+    id: true,
     title: true,
+    intendedTemplate: true,
     // description: true,
     subheadline: true,
     children: {
@@ -38,9 +40,8 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-const page = setPage(() => data.value?.result)
-
-const albums = computed(() => page.value.children ?? [])
+const page = data.value?.result
+setPage(page)
 </script>
 
 <template>
@@ -49,7 +50,7 @@ const albums = computed(() => page.value.children ?? [])
 
     <ul class="grid" style="--gutter: 1.5rem">
       <li
-        v-for="(album, index) in albums"
+        v-for="(album, index) in page?.children ?? []"
         :key="index"
         class="column"
         style="--columns: 3"

@@ -1,11 +1,11 @@
 <script setup lang="ts">
 const route = useRoute()
-
 const { data } = await useKql({
   query: `page("${route.path}")`,
   select: {
     id: true,
     title: true,
+    intendedTemplate: true,
     // description: true,
     subheading: true,
     tags: 'page.tags.split(",")',
@@ -24,12 +24,11 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-const page = setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
 
+const coverUrl = page?.cover?.url || page?.images?.[0]?.url
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
-const coverUrl = computed(
-  () => page.value?.cover?.url || page.value?.images?.[0]?.url
-)
 
 function formatDateShort(date: Date) {
   return new Intl.DateTimeFormat('en-US', {

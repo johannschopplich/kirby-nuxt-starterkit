@@ -4,6 +4,7 @@ const { data } = await useKql({
   select: {
     id: true,
     title: true,
+    intendedTemplate: true,
     // description: true,
     headline: true,
     subheadline: true,
@@ -11,7 +12,8 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
 
 const { data: photographyData } = await useKql({
   query: 'page("photography").children.listed',
@@ -40,8 +42,6 @@ const { data: photographyData } = await useKql({
     },
   },
 })
-
-const albums = computed(() => photographyData.value?.result ?? [])
 </script>
 
 <template>
@@ -49,7 +49,7 @@ const albums = computed(() => photographyData.value?.result ?? [])
     <AppIntro />
 
     <ul class="home-grid">
-      <li v-for="(album, index) in albums" :key="index">
+      <li v-for="(album, index) in photographyData?.result ?? []" :key="index">
         <NuxtLink :to="`/${album.id}`">
           <figure>
             <img

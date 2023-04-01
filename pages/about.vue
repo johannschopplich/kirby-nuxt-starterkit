@@ -4,6 +4,7 @@ const { data } = await useKql({
   select: {
     id: true,
     title: true,
+    intendedTemplate: true,
     // description: true,
     layouts: 'page.layout.toLayouts',
     address: 'page.address.kirbytext',
@@ -18,7 +19,8 @@ const { data } = await useKql({
 })
 
 // Set the current page data for the global page context
-const page = setPage(() => data.value?.result)
+const page = data.value?.result
+setPage(page)
 </script>
 
 <template>
