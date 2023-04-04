@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { notesQuery } from '~/queries'
+
 const route = useRoute()
-const { data } = await useNotesPage()
+const { data } = await useKql(notesQuery)
 
 // Set the current page data for the global page context
 const page = data.value?.result

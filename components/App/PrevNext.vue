@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { notesQuery } from '~/queries'
+
 // Explicitly not using `computed` here
 const page = usePage().value
 
-const { data } = await useNotesPage()
+const { data } = await useKql(notesQuery)
 const children = data.value?.result?.children
 const pageIndex = children?.findIndex(({ id }: any) => id === page?.id)
 </script>
