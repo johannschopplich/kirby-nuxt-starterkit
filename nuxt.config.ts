@@ -33,5 +33,10 @@ export default defineNuxtConfig({
     // Recommended: type check in dev and on build
     // typeCheck: true,
     shim: false,
+    tsConfig: {
+      compilerOptions: {
+        moduleResolution: 'bundler',
+      },
+    },
   },
 })
