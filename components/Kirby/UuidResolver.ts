@@ -17,7 +17,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     const data = reactive({
-      item: resolveUuid(props.collection, props.uuid),
+      item: props.collection.find((item) => item.uuid === props.uuid),
     })
 
     return () => {
