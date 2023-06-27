@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import slugify from '@sindresorhus/slugify'
-import type { KirbyBlock } from '#nuxt-kql'
+import type { KirbyBlock } from 'kirby-fest'
 
 defineProps<{
   block: KirbyBlock<'heading'>

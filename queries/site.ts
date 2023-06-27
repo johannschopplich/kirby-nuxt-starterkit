@@ -1,4 +1,4 @@
-import type { KirbyQuerySchema } from '#nuxt-kql'
+import type { KirbyQuerySchema } from 'kirby-fest'
 
 export const siteQuery: KirbyQuerySchema = {
   query: 'site',
