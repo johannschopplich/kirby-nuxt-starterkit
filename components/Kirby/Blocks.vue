@@ -7,6 +7,7 @@ import {
   LazyKirbyBlockQuote,
   LazyKirbyBlockText,
 } from '#components'
+import type { ComponentPublicInstance } from 'vue'
 import type { KirbyBlock } from 'kirby-fest'
 
 defineProps<{
