@@ -19,7 +19,7 @@ type ComponentConstructor<
   Props = any
 > = new (...args: any[]) => T
 
-const blockComponents: Partial<Record<string, ComponentConstructor>> = {
+const blockComponents: Record<string, ComponentConstructor> = {
   heading: LazyKirbyBlockHeading,
   image: LazyKirbyBlockImage,
   line: LazyKirbyBlockLine,
