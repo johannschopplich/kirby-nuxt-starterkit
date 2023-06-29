@@ -16,6 +16,10 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
+    if (!Array.isArray(props.collection)) {
+      throw new Error('Invalid prop: "collection" must be an array.')
+    }
+
     const data = reactive({
       item: props.collection.find((item) => item.uuid === props.uuid),
     })
