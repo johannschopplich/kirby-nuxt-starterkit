@@ -14,10 +14,7 @@ defineProps<{
   blocks: KirbyBlock<string>[]
 }>()
 
-type ComponentConstructor<
-  T extends ComponentPublicInstance<Props> = ComponentPublicInstance<any>,
-  Props = any
-> = new (...args: any[]) => T
+type ComponentConstructor = new (...args: any[]) => ComponentPublicInstance
 
 const blockComponents: Record<string, ComponentConstructor> = {
   heading: LazyKirbyBlockHeading,
