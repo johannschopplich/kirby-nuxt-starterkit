@@ -29,24 +29,23 @@ export function setPage<T extends Record<string, any>>(page?: T) {
   const description = page.description || site.value.description
   const url = joinURL(siteUrl, useRoute().path)
 
-  // Write the meta tags to the document head
   useHead({
-    title,
     bodyAttrs: {
       'data-template': page.intendedTemplate || 'default',
     },
-    meta: [
-      { name: 'description', content: description },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:url', content: url },
-      { property: 'og:type', content: 'website' },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description },
-      { name: 'twitter:url', content: url },
-      { name: 'twitter:card', content: 'summary' },
-    ],
     link: [{ rel: 'canonical', href: url }],
+  })
+
+  useSeoMeta({
+    title,
+    description,
+    ogTitle: title,
+    ogDescription: description,
+    ogUrl: url,
+    ogType: 'website',
+    twitterTitle: title,
+    twitterDescription: description,
+    twitterCard: 'summary',
   })
 
   pageState.value = 'resolved'
