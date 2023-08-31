@@ -4,7 +4,7 @@ import { joinURL } from 'ufo'
  * Returns the currently active page, similar to Kirby's `$page` global variable
  */
 export function usePage<T extends Record<string, any> = Record<string, any>>() {
-  return useState<T>('app.page', () => ({} as T))
+  return useState<T>('app.page', () => ({}) as T)
 }
 
 /**
@@ -66,6 +66,6 @@ export async function hasPage() {
 function usePageState() {
   return useState<'pending' | 'resolved' | 'rejected'>(
     'app.state.page',
-    () => 'pending'
+    () => 'pending',
   )
 }

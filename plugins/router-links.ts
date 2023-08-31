@@ -28,7 +28,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   function handleAnchors(
     event: MouseEvent & {
       target: HTMLElement
-    }
+    },
   ) {
     const link = event.target.closest('a')
 
