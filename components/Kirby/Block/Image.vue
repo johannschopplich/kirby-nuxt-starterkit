@@ -8,7 +8,7 @@ export interface KirbyImage {
 </script>
 
 <script setup lang="ts">
-import type { KirbyBlock } from 'kirby-fest'
+import type { KirbyBlock } from '#nuxt-kql'
 
 const props = defineProps<{
   block: KirbyBlock<'image'>

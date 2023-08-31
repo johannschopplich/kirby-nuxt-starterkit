@@ -1,4 +1,4 @@
-import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-fest'
+import type { KirbyQueryResponse, KirbyQuerySchema } from '#nuxt-kql'
 
 export interface KirbyPageData {
   id: string
