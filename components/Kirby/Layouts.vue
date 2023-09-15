@@ -8,7 +8,7 @@ defineProps<{
 /** Returns the number of columns this column spans */
 function span(width: `${string}/${string}`, columns = 12) {
   const [a, b] = width.split('/')
-  return columns * (parseInt(a) / parseInt(b))
+  return columns * (Number.parseInt(a) / Number.parseInt(b))
 }
 </script>
 

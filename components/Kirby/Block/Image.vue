@@ -1,4 +1,5 @@
 <script lang="ts">
+/* eslint-disable import/first */
 export interface KirbyImage {
   id: string
   uuid: string
