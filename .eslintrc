@@ -1,4 +1,4 @@
 {
   "root": true,
-  "extends": ["@byjohann/eslint-config"]
+  "extends": "@byjohann/eslint-config"
 }
