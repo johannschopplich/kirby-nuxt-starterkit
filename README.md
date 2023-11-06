@@ -77,4 +77,4 @@ Data is fetched within Suspense components to ensure pre-rendered state for the 
 
 ## License
 
-[MIT](./LICENSE) License © 2022-present [Johann Schopplich](https://github.com/johannschopplich)
+[MIT](./LICENSE) License © 2022-PRESENT [Johann Schopplich](https://github.com/johannschopplich)
