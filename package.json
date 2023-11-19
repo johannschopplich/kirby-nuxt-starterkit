@@ -1,4 +1,6 @@
 {
+  "name": "kirby-nuxt-starterkit",
+  "type": "module",
   "private": true,
   "packageManager": "pnpm@8.10.2",
   "scripts": {
