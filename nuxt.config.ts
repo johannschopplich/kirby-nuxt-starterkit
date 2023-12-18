@@ -15,11 +15,6 @@ export default defineNuxtConfig({
       // Currently only used to infer the type of the `site` query
       kirbySite: siteQuery,
     },
-    // Optionally, cache the queries on the server for an hour
-    server: {
-      // cache: true,
-      // maxAge: 60 * 60,
-    },
   },
 
   nitro: {
@@ -30,6 +25,7 @@ export default defineNuxtConfig({
   },
 
   experimental: {
+    headNext: true,
     typescriptBundlerResolution: true,
   },
 

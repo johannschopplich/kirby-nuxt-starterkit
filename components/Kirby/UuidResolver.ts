@@ -17,7 +17,7 @@ export default defineComponent({
   },
   setup(props, { slots }) {
     if (!Array.isArray(props.collection)) {
-      throw new Error('Invalid prop: "collection" must be an array.')
+      throw new TypeError('Invalid prop: "collection" must be an array.')
     }
 
     const data = reactive({
