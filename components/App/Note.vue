@@ -27,7 +27,7 @@ function formatDateShort(date: Date) {
           class="note-excerpt-date"
           :datetime="note.published"
         >
-          {{ formatDateShort(new Date(note.published)) }}
+          {{ formatDateShort(new Date(note.published * 1000)) }}
         </time>
       </header>
 

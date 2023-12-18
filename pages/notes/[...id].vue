@@ -10,7 +10,7 @@ const { data } = await useKql({
     subheading: true,
     tags: 'page.tags.split(",")',
     text: 'page.text.toBlocks',
-    published: 'page.date.toDate("c")',
+    published: 'page.date.toDate',
     cover: {
       query: 'page.content.cover.toFile',
       select: ['id', 'url'],
@@ -58,9 +58,9 @@ function formatDateShort(date: Date) {
       <footer class="note-footer">
         <ul v-if="page?.tags" class="note-tags">
           <li v-for="(tag, index) in page.tags" :key="index">
-            <NuxtLink :to="{ path: parentRoute, query: { tag } }">{{
-              tag
-            }}</NuxtLink>
+            <NuxtLink :to="{ path: parentRoute, query: { tag } }">
+              {{ tag }}
+            </NuxtLink>
           </li>
         </ul>
 
@@ -70,7 +70,7 @@ function formatDateShort(date: Date) {
           :datetime="page.published"
         >
           Published on
-          {{ formatDateShort(new Date(page.published)) }}
+          {{ formatDateShort(new Date(page.published * 1000)) }}
         </time>
       </footer>
 

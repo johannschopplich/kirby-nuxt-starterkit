@@ -7,7 +7,7 @@ const props = defineProps<{
   options?: ZoomOptions
 }>()
 
-let zoom: Zoom | undefined = undefined
+let zoom: Zoom | undefined
 
 watch(
   () => props.options,
