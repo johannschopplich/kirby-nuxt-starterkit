@@ -24,8 +24,7 @@ export default defineNuxtConfig({
     },
   },
 
-  experimental: {
-    headNext: true,
+  future: {
     typescriptBundlerResolution: true,
   },
 
