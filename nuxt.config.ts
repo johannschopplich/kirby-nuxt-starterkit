@@ -24,10 +24,6 @@ export default defineNuxtConfig({
     },
   },
 
-  future: {
-    typescriptBundlerResolution: true,
-  },
-
   typescript: {
     // Recommended: type check on build
     // typeCheck: 'build',

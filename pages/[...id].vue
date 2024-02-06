@@ -10,7 +10,8 @@ let data = pageData.value
 if (!data?.result) {
   const { data: pageData } = await useKql(getPageQuery('error'))
   data = pageData.value
-  setResponseStatus(useRequestEvent(), 404)
+  const event = useRequestEvent()
+  if (event) setResponseStatus(event, 404)
 }
 
 // Set the current page data for the global page context
