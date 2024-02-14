@@ -33,11 +33,17 @@ export function setPage<T extends Record<string, any>>(page?: T) {
     bodyAttrs: {
       'data-template': page.intendedTemplate || 'default',
     },
+  })
+
+  useServerHead({
     link: [{ rel: 'canonical', href: url }],
   })
 
   useSeoMeta({
     title,
+  })
+
+  useServerSeoMeta({
     description,
     ogTitle: title,
     ogDescription: description,
@@ -58,7 +64,6 @@ export async function hasPage() {
   const state = usePageState()
 
   await until(state).not.toBe('pending')
-  await nextTick()
 
   return state.value === 'resolved'
 }

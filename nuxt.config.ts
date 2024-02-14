@@ -5,7 +5,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      siteUrl: '',
+      siteUrl: 'https://kirby-nuxt-starter.pages.dev',
     },
   },
 

@@ -5,15 +5,15 @@
 <h3 align="center">Kirby Nuxt Starter Kit</h3>
 
 <p align="center">
-  Kirby's sample site – but rewritten in Nuxt 3<br>
-  <a href="https://kirby-nuxt-starterkit.netlify.app"><strong>Explore the kit live »</strong></a>
+  Kirby's sample site – but rewritten in Nuxt<br>
+  <a href="https://kirby-nuxt-starter.pages.dev"><strong>Explore the kit live »</strong></a>
 </p>
 
 <br>
 
 # Kirby Nuxt Starter Kit
 
-This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt 3. The content is fetched using the [`nuxt-kql`](https://nuxt-kql.jhnn.dev) module from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance instance.
+This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt. The content is fetched using the [`nuxt-kql`](https://nuxt-kql.jhnn.dev) module from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance instance.
 
 ## Key Features
 
@@ -47,8 +47,8 @@ KIRBY_API_TOKEN=
 1. Start the development server using `pnpm run dev`
 2. Visit [localhost:3000](http://localhost:3000/)
 
-> [!NOTE]
-> Enable [Take Over Mode](https://vuejs.org/guide/typescript/overview.html#takeover-mode) in Visual Studio Code.
+> [!TIP]
+> Enable [Volar Takeover Mode](https://vuejs.org/guide/typescript/overview.html#volar-takeover-mode) in Visual Studio Code.
 
 ### Production
 
@@ -60,7 +60,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ### Are There Any Drawbacks?
 
-Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://github.com/johannschopplich/kirby-nuxt-starterkit/blob/8484d7890795919ef0b968b4cc4e9d00b7e0b84a/nuxt.config.ts#L20).
+Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://github.com/johannschopplich/kirby-nuxt-starterkit/blob/413f8d434362380ba07238c91a39fd137368ac51/nuxt.config.ts#L23).
 
 ### What's Kirby?
 
@@ -72,7 +72,7 @@ Data is fetched within Suspense components to ensure pre-rendered state for the 
 - **[Forum](https://forum.getkirby.com)** – Whenever you get stuck, don't hesitate to reach out for questions and support.
 - **[Discord](https://chat.getkirby.com)** – Hang out and meet the community.
 - **[YouTube](https://youtube.com/kirbyCasts)** - Watch the latest video tutorials visually with Bastian.
-- **[Twitter](https://twitter.com/getkirby)** – Spread the word.
+- **[Mastodon](https://mastodon.social/@getkirby)** – Spread the word.
 - **[Instagram](https://www.instagram.com/getkirby/)** – Share your creations: #madewithkirby.
 
 ## License
