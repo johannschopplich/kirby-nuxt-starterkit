@@ -52,10 +52,11 @@ jobs:
           node-version: 20
           cache: pnpm
 
-      - run: cp .env.example .env
-
       - name: Install
         run: pnpm install
+        env:
+          KIRBY_BASE_URL: ${{ secrets.KIRBY_BASE_URL }}
+          KIRBY_API_TOKEN: ${{ secrets.KIRBY_API_TOKEN }}
 
       - name: Typecheck
         run: pnpm run test:types
