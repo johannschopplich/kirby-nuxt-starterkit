@@ -24,10 +24,13 @@ const blockComponents: Record<string, ComponentConstructor> = {
   quote: LazyKirbyBlockQuote,
   text: LazyKirbyBlockText,
 }
+
+const content = ref<HTMLElement | undefined>()
+useInternalLinks(content)
 </script>
 
 <template>
-  <div v-router-links>
+  <div ref="content">
     <template v-for="(block, index) in blocks" :key="index">
       <component :is="blockComponents[block.type]" :block="block" />
     </template>

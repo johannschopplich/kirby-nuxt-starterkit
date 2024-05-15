@@ -17,11 +17,14 @@ if (!data?.result) {
 // Set the current page data for the global page context
 const page = data?.result
 setPage(page)
+
+const content = ref<HTMLElement | undefined>()
+useInternalLinks(content)
 </script>
 
 <template>
   <article>
     <h1 class="h1">{{ page?.title }}</h1>
-    <div v-router-links class="text" v-html="page?.text" />
+    <div ref="content" class="text" v-html="page?.text" />
   </article>
 </template>

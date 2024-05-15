@@ -2,7 +2,7 @@
   "name": "kirby-nuxt-starterkit",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@8.15.6",
+  "packageManager": "pnpm@9.1.1",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -16,19 +16,19 @@
     "prepare": "simple-git-hooks && nuxi prepare"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.13.3",
+    "@antfu/eslint-config": "^2.18.0",
     "@sindresorhus/slugify": "^2.2.1",
-    "@types/node": "^20.12.7",
+    "@types/node": "^20.12.12",
     "@vueuse/nuxt": "^10.9.0",
-    "eslint": "^8.57.0",
+    "eslint": "^9.2.0",
     "lint-staged": "^15.2.2",
     "medium-zoom": "^1.1.0",
     "nuxt": "^3.11.2",
-    "nuxt-kql": "^1.4.14",
+    "nuxt-kql": "^1.4.17",
     "prettier": "^3.2.5",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.4.5",
-    "vue-tsc": "^2.0.12"
+    "vue-tsc": "^2.0.17"
   },
   "simple-git-hooks": {
     "pre-commit": "npx lint-staged"

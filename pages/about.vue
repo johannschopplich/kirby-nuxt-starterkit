@@ -21,6 +21,9 @@ const { data } = await useKql({
 // Set the current page data for the global page context
 const page = data.value?.result
 setPage(page)
+
+const content = ref<HTMLElement | undefined>()
+useInternalLinks(content)
 </script>
 
 <template>
@@ -29,8 +32,8 @@ setPage(page)
 
     <aside class="contact">
       <h2 class="h1">Get in contact</h2>
-      <div class="grid" style="--gutter: 1.5rem">
-        <section v-router-links class="column text" style="--columns: 4">
+      <div ref="content" class="grid" style="--gutter: 1.5rem">
+        <section class="column text" style="--columns: 4">
           <h3>Address</h3>
           <div v-html="page.address" />
         </section>
