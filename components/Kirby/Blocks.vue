@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { KirbyBlock } from '#nuxt-kql'
 import type { ComponentPublicInstance } from 'vue'
 import {
   LazyKirbyBlockHeading,
@@ -8,7 +9,6 @@ import {
   LazyKirbyBlockQuote,
   LazyKirbyBlockText,
 } from '#components'
-import type { KirbyBlock } from '#nuxt-kql'
 
 defineProps<{
   blocks: KirbyBlock<string>[]

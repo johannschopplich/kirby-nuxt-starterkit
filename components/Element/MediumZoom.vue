@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import mediumZoom from 'medium-zoom'
-import type { ComponentPublicInstance } from 'vue'
 import type { Zoom, ZoomOptions } from 'medium-zoom'
+import type { ComponentPublicInstance } from 'vue'
+import mediumZoom from 'medium-zoom'
 
 const props = defineProps<{
   options?: ZoomOptions
