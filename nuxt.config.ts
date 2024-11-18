@@ -3,6 +3,8 @@ import { siteQuery } from './queries'
 export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', 'nuxt-kql'],
 
+  compatibilityDate: '2024-04-03',
+
   runtimeConfig: {
     public: {
       siteUrl: 'https://kirby-nuxt-starter.pages.dev',
