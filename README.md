@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This repository is a demonstration. For **production use**, please use the [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend) instead. It is a more advanced version of this repository and my best practice solution to build a Nuxt based frontend on top of Kirby CMS.
+
 <p align="center">
   <img src="https://nuxt-kql.jhnn.dev/logo-shadow.svg" alt="Kirby Nuxt Starter Kit" width="128" height="128">
 </p>
