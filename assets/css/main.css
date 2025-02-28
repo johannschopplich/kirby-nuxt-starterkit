@@ -22,11 +22,11 @@
   --color-code-aqua: #8abeb7;
   --color-code-blue: #7e9abf;
   --color-code-purple: #b294bb;
-  --font-family-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol';
-  --font-family-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo,
-    Courier, monospace;
+  --font-family-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  --font-family-mono:
+    'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
 
 html {

@@ -14,49 +14,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: corepack enable
+      - uses: pnpm/action-setup@v3
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-
-      - name: Install
-        run: pnpm install
-
-      - name: Lint
-        run: pnpm run format:check
+      - run: pnpm install
+      - run: pnpm run format:check
 
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: corepack enable
+      - uses: pnpm/action-setup@v3
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-
-      - name: Install
-        run: pnpm install
-
-      - name: Lint
-        run: pnpm run lint
+      - run: pnpm install
+      - run: pnpm run lint
 
   typecheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: corepack enable
+      - uses: pnpm/action-setup@v3
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: pnpm
-
-      - name: Install
-        run: pnpm install
+      - run: pnpm install
         env:
           KIRBY_BASE_URL: ${{ secrets.KIRBY_BASE_URL }}
           KIRBY_API_TOKEN: ${{ secrets.KIRBY_API_TOKEN }}
-
-      - name: Typecheck
-        run: pnpm run test:types
+      - run: pnpm run test:types
