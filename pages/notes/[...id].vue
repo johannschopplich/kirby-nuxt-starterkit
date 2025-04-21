@@ -9,16 +9,11 @@ const { data } = await useKql({
     // description: true,
     subheading: true,
     tags: 'page.tags.split(",")',
-    text: 'page.text.toBlocks',
+    text: 'page.text.toResolvedBlocks',
     published: 'page.date.toDate',
     cover: {
       query: 'page.content.cover.toFile',
       select: ['id', 'url'],
-    },
-    // Required for image blocks and also for the cover fallback
-    images: {
-      query: 'page.images',
-      select: ['id', 'uuid', 'url', 'alt'],
     },
   },
 })

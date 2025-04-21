@@ -6,15 +6,11 @@ const { data } = await useKql({
     title: true,
     intendedTemplate: true,
     // description: true,
-    layouts: 'page.layout.toLayouts',
+    layouts: 'page.layout.toResolvedLayouts',
     address: 'page.address.kirbytext',
     email: true,
     phone: true,
     social: 'page.social.toStructure',
-    images: {
-      query: 'page.images',
-      select: ['id', 'uuid', 'url', 'alt'],
-    },
   },
 })
 

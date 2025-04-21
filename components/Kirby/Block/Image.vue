@@ -1,24 +1,24 @@
-<script lang="ts">
-/* eslint-disable import/first */
-export interface KirbyImage {
-  id: string
-  uuid: string
-  url: string
-  alt: string | null
-}
-</script>
-
 <script setup lang="ts">
 import type { KirbyBlock } from '#nuxt-kql'
+import type { ResolvedKirbyImage } from '~/types/kirby'
 
 const props = defineProps<{
-  block: KirbyBlock<'image'>
+  block: KirbyBlock<
+    'image-resolved',
+    {
+      location: string
+      // File UUIDs are resolved server-side to the actual image data
+      // See: https://kirby.tools/docs/headless/field-methods
+      image: ResolvedKirbyImage[]
+      src: string
+      alt: string
+      caption: string
+      link: string
+      ratio: string
+      crop: boolean
+    }
+  >
 }>()
-
-const page = usePage()
-
-// Use static data to avoid reactivity when redirecting to another page
-const images = page.value.images
 
 const ratio = props.block.content.ratio || 'auto'
 let size: { w?: string; h?: string } = {}
@@ -43,18 +43,17 @@ const { width } = useElementSize(figure)
       :style="`--w: ${size.w}; --h: ${size.h};`"
     >
       <img
-        v-if="block.content.location === 'web'"
-        :src="block.content.src"
-        :alt="block.content.alt"
+        :src="block.content.location === 'web' ? block.content.src : undefined"
+        :srcset="
+          block.content.location !== 'web'
+            ? block.content.image?.[0]?.srcset
+            : undefined
+        "
+        :width="block.content.image?.[0]?.width"
+        :height="block.content.image?.[0]?.height"
+        :sizes="`${width}px`"
+        :alt="block.content.alt || block.content.image?.[0]?.alt || ''"
       />
-      <KirbyUuidResolver
-        v-else
-        v-slot="{ item: image }"
-        :uuid="props.block.content.image?.[0]"
-        :collection="images"
-      >
-        <img :src="image.url" :sizes="`${width}px`" :alt="image.alt" />
-      </KirbyUuidResolver>
     </component>
 
     <figcaption

@@ -14,15 +14,11 @@ export const notesQuery: KirbyQuerySchema = {
         id: true,
         title: true,
         tags: 'page.tags.split(",")',
-        text: 'page.text.toBlocks.excerpt(280)',
+        text: 'page.text.toResolvedBlocks.excerpt(280)',
         published: 'page.date.toDate',
         cover: {
           query: 'page.content.cover.toFile',
           select: ['id', 'url'],
-        },
-        images: {
-          query: 'page.images',
-          select: ['id', 'uuid', 'url', 'alt'],
         },
       },
     },

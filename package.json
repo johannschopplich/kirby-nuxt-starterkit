@@ -2,7 +2,7 @@
   "name": "kirby-nuxt-starterkit",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.5.2",
+  "packageManager": "pnpm@10.9.0",
   "scripts": {
     "dev": "nuxi dev",
     "build": "nuxi build",
@@ -16,22 +16,23 @@
     "prepare": "nuxi prepare"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.3.0",
+    "@antfu/eslint-config": "^4.12.0",
     "@sindresorhus/slugify": "^2.2.1",
-    "@types/node": "^22.13.5",
-    "@vueuse/nuxt": "^12.7.0",
-    "eslint": "^9.21.0",
+    "@types/node": "^22.14.1",
+    "@vueuse/nuxt": "^13.1.0",
+    "eslint": "^9.25.1",
     "medium-zoom": "^1.1.0",
-    "nuxt": "^3.15.4",
+    "nuxt": "^3.16.2",
     "nuxt-kql": "^1.5.4",
-    "prettier": "^3.5.2",
-    "typescript": "^5.7.3",
-    "vue-tsc": "^2.2.4"
+    "prettier": "^3.5.3",
+    "typescript": "^5.8.3",
+    "vue-tsc": "^2.2.8"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
       "@parcel/watcher",
       "esbuild",
+      "unrs-resolver",
       "vue-demi"
     ]
   }
