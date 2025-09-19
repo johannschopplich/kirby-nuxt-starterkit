@@ -2,7 +2,7 @@
 > This repository is a demonstration. For **production use**, please use the [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend) instead. It is a more advanced version of this repository and my best practice solution to build a Nuxt based frontend on top of Kirby CMS.
 
 <p align="center">
-  <img src="https://nuxt-kql.byjohann.dev/logo-shadow.svg" alt="Kirby Nuxt Starter Kit" width="128" height="128">
+  <img src="https://nuxt-kirby.byjohann.dev/logo-shadow.svg" alt="Kirby Nuxt Starter Kit" width="128" height="128">
 </p>
 
 <h3 align="center">Kirby Nuxt Starter Kit</h3>
@@ -16,11 +16,11 @@
 
 # Kirby Nuxt Starter Kit
 
-This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt. The content is fetched using the [`nuxt-kql`](https://nuxt-kql.byjohann.dev) module from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance instance.
+This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt. The content is fetched using the [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev) module from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance instance.
 
 ## Key Features
 
-- 🫂 Kirby Query Language with [`nuxt-kql`](https://nuxt-kql.byjohann.dev)
+- 🫂 Kirby Query Language with [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev)
 - 🪁 [Component based Kirby Blocks](./components/Kirby/Block/)
 - 🏛 Global [site data](./plugins/site.ts) similar to Kirby's `$site`
 - 🗳 [Collections](./composables/collections.ts) for pre-defined queries

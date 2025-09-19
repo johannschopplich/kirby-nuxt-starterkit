@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { notesQuery } from '~/queries'
+import { notesQuery } from '#shared/queries'
 
 // Explicitly not using `computed` here
 const page = usePage().value

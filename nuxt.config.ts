@@ -1,7 +1,7 @@
-import { siteQuery } from './queries'
+import { siteQuery } from './shared/queries'
 
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', 'nuxt-kql'],
+  modules: ['@vueuse/nuxt', 'nuxt-kirby'],
 
   compatibilityDate: '2025-01-01',
 
@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     },
   },
 
-  kql: {
+  kirby: {
     auth: 'bearer',
     prefetch: {
       // Currently only used to infer the type of the `site` query

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { notesQuery } from '~/queries'
+import { notesQuery } from '#shared/queries'
 
 const route = useRoute()
 const { data } = await useKql(notesQuery)
