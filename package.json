@@ -23,7 +23,7 @@
     "eslint": "^9.35.0",
     "medium-zoom": "^1.1.0",
     "nuxt": "^4.1.2",
-    "nuxt-kirby": "^3.0.0",
+    "nuxt-kirby": "^3.0.1",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
     "vue-tsc": "^3.0.7"
