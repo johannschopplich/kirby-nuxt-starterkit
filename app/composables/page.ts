@@ -29,23 +29,25 @@ export function setPage<T extends Record<string, any>>(page: T) {
     },
   })
 
-  useServerHead({
-    link: [{ rel: 'canonical', href: url }],
-  })
-
   useSeoMeta({
     title,
   })
 
-  useServerSeoMeta({
-    description,
-    ogTitle: title,
-    ogDescription: description,
-    ogUrl: url,
-    ogType: 'website',
-    twitterTitle: title,
-    twitterDescription: description,
-  })
+  if (import.meta.server) {
+    useHead({
+      link: [{ rel: 'canonical', href: url }],
+    })
+
+    useSeoMeta({
+      description,
+      ogTitle: title,
+      ogDescription: description,
+      ogUrl: url,
+      ogType: 'website',
+      twitterTitle: title,
+      twitterDescription: description,
+    })
+  }
 
   // Resolve components that depend on the full page data
   const nuxtApp = useNuxtApp()
