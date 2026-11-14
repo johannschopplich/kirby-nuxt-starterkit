@@ -2,7 +2,7 @@
   "name": "kirby-nuxt-starterkit",
   "type": "module",
   "private": true,
-  "packageManager": "pnpm@10.17.0",
+  "packageManager": "pnpm@12.18.0",
   "scripts": {
     "dev": "nuxt dev",
     "build": "nuxt build",
@@ -26,14 +26,7 @@
     "nuxt-kirby": "^3.0.1",
     "prettier": "^3.6.2",
     "typescript": "^5.9.2",
+    "ufo": "^1.6.4",
     "vue-tsc": "^3.0.7"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@parcel/watcher",
-      "esbuild",
-      "unrs-resolver",
-      "vue-demi"
-    ]
   }
 }
