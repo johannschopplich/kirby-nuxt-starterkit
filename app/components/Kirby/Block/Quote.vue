@@ -9,6 +9,6 @@ defineProps<{
 <template>
   <blockquote>
     <div v-html="block.content.text" />
-    <footer v-html="block.content.citation" />
+    <footer v-if="block.content.citation" v-html="block.content.citation" />
   </blockquote>
 </template>
