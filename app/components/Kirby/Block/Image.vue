@@ -15,7 +15,7 @@ const props = defineProps<{
       caption: string
       link: string
       ratio: string
-      crop: boolean
+      crop: 'true' | 'false'
     }
   >
 }>()
@@ -38,7 +38,7 @@ const { width } = useElementSize(figure)
     <component
       :is="block.content.link ? 'a' : 'div'"
       :href="block.content.link || undefined"
-      :data-contain="block.content.crop === false || undefined"
+      :data-contain="block.content.crop === 'false' || undefined"
       :class="[ratio === 'auto' ? 'auto' : 'img']"
       :style="`--w: ${size.w}; --h: ${size.h};`"
     >
