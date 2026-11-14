@@ -1,4 +1,3 @@
-import type { HookResult } from '@nuxt/schema'
 import { joinURL } from 'ufo'
 
 /**
@@ -47,51 +46,5 @@ export function setPage<T extends Record<string, any>>(page: T) {
       twitterTitle: title,
       twitterDescription: description,
     })
-  }
-
-  // Resolve components that depend on the full page data.
-  const nuxtApp = useNuxtApp()
-  nuxtApp._pageDependenciesRendered = true
-  return nuxtApp.callHook('page-dependencies:rendered')
-}
-
-/**
- * Returns a promise that resolves when the page setup is complete.
- */
-export async function hasPage() {
-  if (import.meta.server) {
-    const nuxtApp = useNuxtApp()
-    const error = useError()
-
-    // Defer rendering the component until the page component has rendered.
-    return new Promise<void>((resolve) => {
-      const resolver = () => {
-        resolve()
-      }
-
-      // If Nuxt has an error, immediately render the component.
-      if (error.value) {
-        return resolver()
-      }
-
-      if (nuxtApp._pageDependenciesRendered) {
-        return resolver()
-      }
-
-      // Called manually by using the `setPage` composable.
-      nuxtApp.hooks.hookOnce('page-dependencies:rendered', resolver)
-
-      // When any error happens, resolve.
-      nuxtApp.hooks.hookOnce('app:error', resolver)
-      nuxtApp.hooks.hookOnce('vue:error', resolver)
-    })
-  }
-
-  return Promise.resolve()
-}
-
-declare module '#app' {
-  interface RuntimeNuxtHooks {
-    'page-dependencies:rendered': () => HookResult
   }
 }
