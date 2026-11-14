@@ -13,10 +13,7 @@ export default defineNuxtConfig({
     auth: 'bearer',
   },
 
-  nitro: {
-    prerender: {
-      // Prerender the index page
-      routes: ['/'],
-    },
+  prerender: {
+    routes: ['/'],
   },
 })
