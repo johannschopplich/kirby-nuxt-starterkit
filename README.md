@@ -1,78 +1,70 @@
 > [!IMPORTANT]
-> This repository is a demonstration. For **production use**, please use the [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend) instead. It is a more advanced version of this repository and my best practice solution to build a Nuxt based frontend on top of Kirby CMS.
+> This repository is a demo. For production, use the [Cacao Kit](https://github.com/johannschopplich/cacao-kit-frontend) instead – the advanced version of this stack and my best practice for a Nuxt frontend on top of Kirby.
 
-<p align="center">
-  <img src="https://nuxt-kirby.byjohann.dev/logo-shadow.svg" alt="Kirby Nuxt Starter Kit" width="128" height="128">
-</p>
+<div align="center">
 
-<h3 align="center">Kirby Nuxt Starter Kit</h3>
-
-<p align="center">
-  Kirby's sample site – but rewritten in Nuxt<br>
-  <a href="https://kirby-nuxt-starter.byjohann.dev"><strong>Explore the kit live »</strong></a>
-</p>
-
-<br>
+<img src="https://nuxt-kirby.byjohann.dev/logo-shadow.svg" alt="Kirby Nuxt Starter Kit" width="128" height="128">
 
 # Kirby Nuxt Starter Kit
 
-This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt. The content is fetched using the [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev) module from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance.
+Kirby's sample site – rewritten in Nuxt.
+
+[Live Demo](https://kirby-nuxt-starter.byjohann.dev) •
+[Development](#development) •
+[Deployment](#deployment)
+
+</div>
+
+This repository ports the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt. The content comes from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance, queried with [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev).
 
 ## Key Features
 
 - 🫂 Kirby Query Language with [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev)
-- 🪁 [Component based Kirby Blocks](./app/components/Kirby/Block/)
+- 🪁 [Component-based Kirby blocks](./app/components/Kirby/Block/)
 - 🏛 Global [site data](./app/plugins/site.server.ts) similar to Kirby's `$site`
 - 🗳 [Queries](./app/queries/) for pre-defined KQL requests
-- 🔎 SSR generated SEO metadata
+- 🔎 Server-rendered SEO metadata
 - 📐 Prettier & ESLint
 - 🔢 Pre-configured [VS Code settings](./.vscode/settings.json)
-- 🔖 And much more!
 
-## Usage
+## Project Structure
 
-### Prerequisites
-
-1. Install dependencies using `pnpm install`
-2. Adapt the relevant environment variables:
-
-```bash
-# Base URL of the Kirby backend
-NUXT_KIRBY_URL=
-# Token for bearer authentication
-# See https://kirby.tools/docs/headless/configuration/authentication
-NUXT_KIRBY_TOKEN=
+```
+app/
+├── components/Kirby/       # Block and layout renderers
+├── composables/            # Page and site data, SEO metadata, and links
+├── pages/                  # Home, about, notes, photography, and a catch-all for every other Kirby page
+├── plugins/site.server.ts  # Site data, fetched on the server with each render
+└── queries/                # KQL queries and their response types
+shared/types/kirby.ts       # `ResolvedKirbyImage` type
 ```
 
-### Development
+## Development
 
-1. Start the development server using `pnpm run dev`
-2. Visit [localhost:3000](http://localhost:3000/)
+1. Copy `.env.example` to `.env`. It points at the public demo backend; for your own [Kirby Headless](https://kirby.tools/docs/headless/getting-started) backend, set `NUXT_KIRBY_URL` to its base URL and `NUXT_KIRBY_TOKEN` to its [bearer token](https://kirby.tools/docs/headless/configuration/authentication).
 
-### Production
+   ```bash
+   cp .env.example .env
+   ```
 
-Build the application for production with `pnpm run build`.
+2. Install dependencies using `pnpm install`.
+3. Start the development server using `pnpm run dev` and visit [localhost:3000](http://localhost:3000/).
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment).
+## Deployment
 
-## FAQ
+Every push to `main` builds the app with the `cloudflare_module` preset and deploys it to Cloudflare Workers through [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). The workflow reads three repository secrets:
 
-### Are There Any Drawbacks?
+- `KIRBY_BASE_URL` and `KIRBY_API_TOKEN` – the Kirby backend, passed to the build as `NUXT_KIRBY_URL` and `NUXT_KIRBY_TOKEN`
+- `CLOUDFLARE_API_TOKEN` – the token `wrangler deploy` authenticates with
 
-Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://nuxt.com/docs/getting-started/prerendering).
+In a fork, change:
 
-### What's Kirby?
+- `name` in [`wrangler.toml`](./wrangler.toml), and the `routes` pattern to a domain on your Cloudflare account – without one, drop `[[routes]]` and set `workers_dev = true`
+- `siteUrl` in [`nuxt.config.ts`](./nuxt.config.ts)
 
-- **[getkirby.com](https://getkirby.com)** – Get to know the CMS.
-- **[Try it](https://getkirby.com/try)** – Take a test ride with our online demo. Or download one of our kits to get started.
-- **[Documentation](https://getkirby.com/docs/guide)** – Read the official guide, reference and cookbook recipes.
-- **[Issues](https://github.com/getkirby/kirby/issues)** – Report bugs and other problems.
-- **[Feedback](https://feedback.getkirby.com)** – You have an idea for Kirby? Share it.
-- **[Forum](https://forum.getkirby.com)** – Whenever you get stuck, don't hesitate to reach out for questions and support.
-- **[Discord](https://chat.getkirby.com)** – Hang out and meet the community.
-- **[YouTube](https://youtube.com/kirbyCasts)** - Watch the latest video tutorials visually with Bastian.
-- **[Mastodon](https://mastodon.social/@getkirby)** – Spread the word.
-- **[Instagram](https://www.instagram.com/getkirby/)** – Share your creations: #madewithkirby.
+For another host, build with `pnpm run build` and follow the [Nuxt deployment docs](https://nuxt.com/docs/getting-started/deployment).
+
+A server-rendered page waits for the site and page KQL queries before it responds. The home page is [prerendered](https://nuxt.com/docs/getting-started/prerendering) at build time, so its content updates with the next deploy; add other pages whose content can wait for a deploy to `prerender.routes` in `nuxt.config.ts`.
 
 ## License
 
