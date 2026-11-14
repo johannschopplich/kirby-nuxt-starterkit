@@ -2,19 +2,19 @@ import type { HookResult } from '@nuxt/schema'
 import { joinURL } from 'ufo'
 
 /**
- * Returns the currently active page, similar to Kirby's `$page` global variable
+ * Returns the currently active page, similar to Kirby's `$page` global variable.
  */
 export function usePage<T extends Record<string, any> = Record<string, any>>() {
   return useState<T>('app.page', () => ({}) as T)
 }
 
 /**
- * Sets the currently active page and updates the document head
+ * Sets the currently active page and updates the document head.
  */
 export function setPage<T extends Record<string, any>>(page: T) {
   usePage().value = page
 
-  // Build the page meta tags
+  // Build the page meta tags.
   const { siteUrl } = useRuntimeConfig().public
   const site = useSite()
   const title = page.title
@@ -49,39 +49,39 @@ export function setPage<T extends Record<string, any>>(page: T) {
     })
   }
 
-  // Resolve components that depend on the full page data
+  // Resolve components that depend on the full page data.
   const nuxtApp = useNuxtApp()
-  nuxtApp._nuxtPageDependenciesRendered = true
-  return nuxtApp.callHook('nuxt-page-dependencies:rendered')
+  nuxtApp._pageDependenciesRendered = true
+  return nuxtApp.callHook('page-dependencies:rendered')
 }
 
 /**
- * Returns a promise that resolves when the page setup is complete
+ * Returns a promise that resolves when the page setup is complete.
  */
 export async function hasPage() {
   if (import.meta.server) {
     const nuxtApp = useNuxtApp()
     const error = useError()
 
-    // Defer rendering the component until the page component has rendered
+    // Defer rendering the component until the page component has rendered.
     return new Promise<void>((resolve) => {
       const resolver = () => {
         resolve()
       }
 
-      // If Nuxt has an error, immediately render the component
+      // If Nuxt has an error, immediately render the component.
       if (error.value) {
         return resolver()
       }
 
-      if (nuxtApp._nuxtPageDependenciesRendered) {
+      if (nuxtApp._pageDependenciesRendered) {
         return resolver()
       }
 
-      // Called manually by using the `setPage` composable
-      nuxtApp.hooks.hookOnce('nuxt-page-dependencies:rendered', resolver)
+      // Called manually by using the `setPage` composable.
+      nuxtApp.hooks.hookOnce('page-dependencies:rendered', resolver)
 
-      // When any error happens, resolve
+      // When any error happens, resolve.
       nuxtApp.hooks.hookOnce('app:error', resolver)
       nuxtApp.hooks.hookOnce('vue:error', resolver)
     })
@@ -92,6 +92,6 @@ export async function hasPage() {
 
 declare module '#app' {
   interface RuntimeNuxtHooks {
-    'nuxt-page-dependencies:rendered': () => HookResult
+    'page-dependencies:rendered': () => HookResult
   }
 }
