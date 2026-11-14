@@ -1,8 +1,8 @@
-import type { KirbySite } from 'kirby-types'
+import type { KirbySiteData } from '#shared/queries'
 
 /**
  * Access the global site context, similar to Kirby's `$site` global variable
  */
 export function useSite() {
-  return useState<Partial<KirbySite>>('app.site', () => ({}))
+  return useState<Partial<KirbySiteData>>('app.site', () => ({}))
 }

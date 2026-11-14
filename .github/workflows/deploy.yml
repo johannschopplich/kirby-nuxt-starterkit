@@ -21,16 +21,13 @@ jobs:
 
       - name: Install
         run: pnpm install
-        env:
-          KIRBY_BASE_URL: ${{ secrets.KIRBY_BASE_URL }}
-          KIRBY_API_TOKEN: ${{ secrets.KIRBY_API_TOKEN }}
 
       - name: Build
         run: pnpm run build
         env:
           NITRO_PRESET: cloudflare_pages
-          KIRBY_BASE_URL: ${{ secrets.KIRBY_BASE_URL }}
-          KIRBY_API_TOKEN: ${{ secrets.KIRBY_API_TOKEN }}
+          NUXT_KIRBY_URL: ${{ secrets.KIRBY_BASE_URL }}
+          NUXT_KIRBY_TOKEN: ${{ secrets.KIRBY_API_TOKEN }}
 
       - name: Deploy to Cloudflare
         run: npx wrangler pages deploy

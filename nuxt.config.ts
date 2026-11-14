@@ -1,5 +1,3 @@
-import { siteQuery } from './shared/queries'
-
 export default defineNuxtConfig({
   modules: ['@vueuse/nuxt', 'nuxt-kirby'],
 
@@ -13,10 +11,6 @@ export default defineNuxtConfig({
 
   kirby: {
     auth: 'bearer',
-    prefetch: {
-      // Currently only used to infer the type of the `site` query
-      kirbySite: siteQuery,
-    },
   },
 
   nitro: {

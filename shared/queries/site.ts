@@ -1,4 +1,16 @@
-import type { KirbyQuerySchema } from 'kirby-types'
+import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
+
+export interface KirbySiteData {
+  title: string
+  description: string
+  children: {
+    id: string
+    title: string
+    isListed: boolean
+  }[]
+}
+
+export type KirbySiteResponse = KirbyQueryResponse<KirbySiteData>
 
 export const siteQuery: KirbyQuerySchema = {
   query: 'site',

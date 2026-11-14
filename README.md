@@ -39,10 +39,10 @@ This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby
 
 ```bash
 # Base URL of the Kirby backend
-KIRBY_BASE_URL=
+NUXT_KIRBY_URL=
 # Token for bearer authentication
 # See https://github.com/johannschopplich/kirby-headless-starter#private-vs-public-api
-KIRBY_API_TOKEN=
+NUXT_KIRBY_TOKEN=
 ```
 
 ### Development

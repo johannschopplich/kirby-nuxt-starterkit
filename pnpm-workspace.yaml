@@ -1,4 +1,6 @@
 minimumReleaseAgeExcludePrune: true
+minimumReleaseAgeExclude:
+  - nuxt-kirby@5.0.0
 
 trustPolicy: no-downgrade
 

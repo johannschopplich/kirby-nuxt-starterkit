@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { KirbyBlock } from '#nuxt-kirby'
+import type { KirbyBlock } from 'kirby-types'
 
 defineProps<{
   block: KirbyBlock<'line'>
