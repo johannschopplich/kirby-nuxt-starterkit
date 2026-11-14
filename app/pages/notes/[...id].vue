@@ -11,7 +11,7 @@ const { data } = await useKql({
     text: 'page.text.toResolvedBlocks',
     published: 'page.date.toDate',
     cover: {
-      query: 'page.content.cover.toFile',
+      query: 'page.content.cover.toFile ?? page.image',
       select: ['id', 'url'],
     },
   },
@@ -20,7 +20,7 @@ const { data } = await useKql({
 const page = data.value?.result
 setPage(page)
 
-const coverUrl = page?.cover?.url || page?.images?.[0]?.url
+const coverUrl = page?.cover?.url
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
 
 function formatDateShort(date: Date) {

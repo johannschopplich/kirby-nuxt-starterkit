@@ -18,7 +18,7 @@ function formatDateShort(date: Date) {
     <NuxtLink :to="`/${note?.id}`">
       <header>
         <figure class="img" style="--w: 16; --h: 9">
-          <img :src="note?.cover?.url ?? note?.images?.[0]?.url" alt="" />
+          <img :src="note?.cover?.url" alt="" />
         </figure>
 
         <h2 class="note-excerpt-title">{{ note?.title }}</h2>

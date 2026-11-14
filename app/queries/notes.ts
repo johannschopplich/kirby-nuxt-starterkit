@@ -16,7 +16,7 @@ export const notesQuery: KirbyQuerySchema = {
         text: 'page.text.toResolvedBlocks.excerpt(280)',
         published: 'page.date.toDate',
         cover: {
-          query: 'page.content.cover.toFile',
+          query: 'page.content.cover.toFile ?? page.image',
           select: ['id', 'url'],
         },
       },
