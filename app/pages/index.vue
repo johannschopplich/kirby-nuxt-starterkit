@@ -5,13 +5,11 @@ const { data } = await useKql({
     id: true,
     title: true,
     intendedTemplate: true,
-    // description: true,
     headline: true,
     subheadline: true,
   },
 })
 
-// Set the current page data for the global page context
 const page = data.value?.result
 setPage(page)
 

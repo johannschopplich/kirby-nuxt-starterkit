@@ -5,7 +5,6 @@ const { data } = await useKql({
     id: true,
     title: true,
     intendedTemplate: true,
-    // description: true,
     subheadline: true,
     children: {
       query: 'page.children.listed',
@@ -39,7 +38,6 @@ const { data } = await useKql({
   },
 })
 
-// Set the current page data for the global page context
 const page = data.value?.result
 setPage(page)
 </script>

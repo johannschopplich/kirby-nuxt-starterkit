@@ -4,13 +4,12 @@ import { notesQuery } from '#shared/queries'
 const route = useRoute()
 const { data } = await useKql(notesQuery)
 
-// Set the current page data for the global page context
 const page = data.value?.result
 setPage(page)
 
 const tag = computed(() => route.query.tag as string)
 
-// Filter page children by tags
+// Filter page children by tags.
 const notes = computed(() =>
   (page?.children ?? []).filter((i: any) =>
     tag.value ? i.tags?.includes(tag.value) : true,

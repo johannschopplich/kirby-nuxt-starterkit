@@ -5,7 +5,6 @@ export const notesQuery: KirbyQuerySchema = {
   select: {
     title: true,
     intendedTemplate: true,
-    // description: true,
     subheadline: true,
     text: 'page.text.kirbytext',
     children: {

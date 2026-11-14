@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { notesQuery } from '#shared/queries'
 
-// Explicitly not using `computed` here
+// Explicitly not using `computed` here to avoid new page's content being
+// rendered before the new page is visited.
 const page = usePage().value
 
 const { data } = await useKql(notesQuery)

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Explicitly not using `computed` here to avoid new page's content being
-// rendered before the new page is visited
+// rendered before the new page is visited.
 const page = usePage().value
 </script>
 
