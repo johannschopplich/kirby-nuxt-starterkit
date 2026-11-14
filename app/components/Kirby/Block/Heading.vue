@@ -8,7 +8,10 @@ defineProps<{
 </script>
 
 <template>
-  <component :is="block.content.level" :id="slugify(block.content.text)">
+  <component
+    :is="block.content.level || 'h2'"
+    :id="slugify(block.content.text)"
+  >
     <span v-html="block.content.text" />
   </component>
 </template>
