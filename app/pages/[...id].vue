@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { getPageQuery } from '#shared/queries'
+import { getPageQuery } from '~/queries'
 
 const kirbyPath = useRoute().path
 const { data: pageData } = await useKql(getPageQuery(kirbyPath))

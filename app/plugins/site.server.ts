@@ -1,6 +1,6 @@
 import type { FetchError } from 'ofetch'
-import type { KirbySiteResponse } from '#shared/queries'
-import { siteQuery } from '#shared/queries'
+import type { KirbySiteResponse } from '~/queries'
+import { siteQuery } from '~/queries'
 
 export default defineNuxtPlugin(async () => {
   const site = useSite()

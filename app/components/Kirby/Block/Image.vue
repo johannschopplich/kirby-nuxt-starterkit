@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { KirbyBlock } from 'kirby-types'
-import type { ResolvedKirbyImage } from '~/types/kirby'
+import type { ResolvedKirbyImage } from '#shared/types/kirby'
 
 const props = defineProps<{
   block: KirbyBlock<

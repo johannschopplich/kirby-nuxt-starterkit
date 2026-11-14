@@ -1,4 +1,4 @@
-import type { KirbySiteData } from '#shared/queries'
+import type { KirbySiteData } from '~/queries'
 
 /**
  * Returns the global site context, similar to Kirby's `$site` global variable.

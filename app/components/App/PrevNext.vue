@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { notesQuery } from '#shared/queries'
+import { notesQuery } from '~/queries'
 
 // Explicitly not using `computed` here to avoid new page's content being
 // rendered before the new page is visited.
