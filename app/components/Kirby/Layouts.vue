@@ -5,7 +5,6 @@ defineProps<{
   layouts: KirbyLayout[]
 }>()
 
-/** Returns the number of columns this column spans */
 function span(width: `${string}/${string}`, columns = 12) {
   const [a = '1', b = '1'] = width.split('/')
   return columns * (Number.parseInt(a) / Number.parseInt(b))

@@ -6,7 +6,6 @@ const { data: pageData } = await useKql(getPageQuery(kirbyPath))
 
 let data = pageData.value
 
-// If page content is empty, load the error page.
 if (!data?.result) {
   const { data: pageData } = await useKql(getPageQuery('error'))
   data = pageData.value

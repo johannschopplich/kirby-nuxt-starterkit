@@ -7,13 +7,9 @@ export function usePage<T extends Record<string, any> = Record<string, any>>() {
   return useState<T>('app.page', () => ({}) as T)
 }
 
-/**
- * Sets the currently active page and updates the document head.
- */
 export function setPage<T extends Record<string, any>>(page: T) {
   usePage().value = page
 
-  // Build the page meta tags.
   const { siteUrl } = useRuntimeConfig().public
   const site = useSite()
   const title = page.title

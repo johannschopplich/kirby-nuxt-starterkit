@@ -9,7 +9,6 @@ setPage(page)
 
 const tag = computed(() => route.query.tag as string)
 
-// Filter page children by tags.
 const notes = computed(() =>
   (page?.children ?? []).filter((i: any) =>
     tag.value ? i.tags?.includes(tag.value) : true,
