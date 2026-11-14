@@ -11,7 +11,7 @@ import {
 } from '#components'
 
 defineProps<{
-  blocks: KirbyBlock<string>[]
+  blocks: KirbyBlock[]
 }>()
 
 const blockComponents: Record<string, Component> = {
@@ -23,7 +23,7 @@ const blockComponents: Record<string, Component> = {
   text: LazyKirbyBlockText,
 }
 
-const content = ref<HTMLElement | undefined>()
+const content = useTemplateRef('content')
 useInternalLinks(content)
 </script>
 

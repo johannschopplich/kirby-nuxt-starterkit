@@ -18,7 +18,7 @@ const { data } = await useKql({
 const page = data.value?.result
 setPage(page)
 
-const content = ref<HTMLElement | undefined>()
+const content = useTemplateRef('content')
 useInternalLinks(content)
 </script>
 

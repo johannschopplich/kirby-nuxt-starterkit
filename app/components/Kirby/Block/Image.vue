@@ -29,7 +29,7 @@ if (ratio !== 'auto') {
 }
 
 // Auto sizes for `srcset` attribute if used
-const figure = ref<HTMLElement | undefined>()
+const figure = useTemplateRef('figure')
 const { width } = useElementSize(figure)
 </script>
 
