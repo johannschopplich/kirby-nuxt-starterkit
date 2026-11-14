@@ -19,17 +19,7 @@ const { data: photographyData } = await useKql({
     id: true,
     title: true,
     cover: {
-      query: 'page.content.cover.toFile',
-      select: {
-        resized: {
-          query: 'file.resize(1024, 1024)',
-          select: ['url'],
-        },
-        alt: true,
-      },
-    },
-    image: {
-      query: 'page.images.first',
+      query: 'page.content.cover.toFile ?? page.image',
       select: {
         resized: {
           query: 'file.resize(1024, 1024)',
@@ -50,12 +40,7 @@ const { data: photographyData } = await useKql({
       <li v-for="(album, index) in photographyData?.result ?? []" :key="index">
         <NuxtLink :to="`/${album.id}`">
           <figure>
-            <img
-              :src="
-                album?.cover?.resized?.url ?? album?.images?.[0]?.resized?.url
-              "
-              :alt="album?.cover?.alt ?? album?.images?.[0]?.alt"
-            />
+            <img :src="album?.cover?.resized?.url" :alt="album?.cover?.alt" />
             <figcaption>
               <span>
                 <span class="example-name">{{ album.title }}</span>
