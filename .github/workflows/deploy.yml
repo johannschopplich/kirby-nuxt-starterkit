@@ -31,11 +31,11 @@ jobs:
       - name: Build
         run: pnpm run build
         env:
-          NITRO_PRESET: cloudflare_pages
+          NITRO_PRESET: cloudflare_module
           NUXT_KIRBY_URL: ${{ secrets.KIRBY_BASE_URL }}
           NUXT_KIRBY_TOKEN: ${{ secrets.KIRBY_API_TOKEN }}
 
       - name: Deploy to Cloudflare
-        run: pnpm dlx wrangler pages deploy
+        run: pnpm dlx wrangler deploy
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

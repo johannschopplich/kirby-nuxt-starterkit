@@ -9,7 +9,7 @@
 
 <p align="center">
   Kirby's sample site – but rewritten in Nuxt<br>
-  <a href="https://kirby-nuxt-starter.pages.dev"><strong>Explore the kit live »</strong></a>
+  <a href="https://kirby-nuxt-starter.byjohann.dev"><strong>Explore the kit live »</strong></a>
 </p>
 
 <br>

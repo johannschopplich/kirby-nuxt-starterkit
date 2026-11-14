@@ -1,3 +1,14 @@
 name = "kirby-nuxt-starter"
-pages_build_output_dir = "./dist"
+main = "./.output/server/index.mjs"
+workers_dev = false
 compatibility_date = "2026-11-01"
+compatibility_flags = ["nodejs_compat", "no_nodejs_compat_v2"]
+
+[[routes]]
+pattern = "kirby-nuxt-starter.byjohann.dev"
+custom_domain = true
+
+[assets]
+directory = "./.output/public"
+not_found_handling = "none"
+binding = "ASSETS"
