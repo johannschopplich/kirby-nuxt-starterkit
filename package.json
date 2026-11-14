@@ -12,7 +12,7 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --write",
     "format:check": "prettier \"**/*.{css,html,json,md,mjs,ts,vue,yml}\" --check",
-    "test:types": "vue-tsc --noEmit",
+    "test:types": "vue-tsc -b --noEmit",
     "prepare": "nuxt prepare"
   },
   "devDependencies": {
