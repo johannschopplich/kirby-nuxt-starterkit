@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { KirbyBlock } from '#nuxt-kirby'
 import type { Component } from 'vue'
+import type { KirbyBlock } from '#nuxt-kirby'
 import {
   LazyKirbyBlockHeading,
   LazyKirbyBlockImage,
