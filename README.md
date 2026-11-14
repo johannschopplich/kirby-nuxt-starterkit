@@ -16,32 +16,31 @@
 
 # Kirby Nuxt Starter Kit
 
-This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt. The content is fetched using the [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev) module from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance instance.
+This repository is a port of the [Kirby Starter Kit](https://github.com/getkirby/starterkit) to Nuxt. The content is fetched using the [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev) module from [Kirby Headless Starter](https://github.com/johannschopplich/kirby-headless-starter), a headless Kirby instance.
 
 ## Key Features
 
 - 🫂 Kirby Query Language with [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev)
-- 🪁 [Component based Kirby Blocks](./components/Kirby/Block/)
-- 🏛 Global [site data](./plugins/site.ts) similar to Kirby's `$site`
-- 🗳 [Collections](./composables/collections.ts) for pre-defined queries
+- 🪁 [Component based Kirby Blocks](./app/components/Kirby/Block/)
+- 🏛 Global [site data](./app/plugins/site.server.ts) similar to Kirby's `$site`
+- 🗳 [Queries](./app/queries/) for pre-defined KQL requests
 - 🔎 SSR generated SEO metadata
 - 📐 Prettier & ESLint
-- 🔢 Pre-configured [VSCode settings](./.vscode/settings.json)
+- 🔢 Pre-configured [VS Code settings](./.vscode/settings.json)
 - 🔖 And much more!
 
 ## Usage
 
 ### Prerequisites
 
-1. Enable [Corepack](https://github.com/nodejs/corepack) using `corepack enable`
-2. Install dependencies using `pnpm install`
-3. Adapt the relevant environment variables:
+1. Install dependencies using `pnpm install`
+2. Adapt the relevant environment variables:
 
 ```bash
 # Base URL of the Kirby backend
 NUXT_KIRBY_URL=
 # Token for bearer authentication
-# See https://github.com/johannschopplich/kirby-headless-starter#private-vs-public-api
+# See https://kirby.tools/docs/headless/configuration/authentication
 NUXT_KIRBY_TOKEN=
 ```
 
@@ -60,7 +59,7 @@ Check out the [deployment documentation](https://nuxt.com/docs/getting-started/d
 
 ### Are There Any Drawbacks?
 
-Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://github.com/johannschopplich/kirby-nuxt-starterkit/blob/413f8d434362380ba07238c91a39fd137368ac51/nuxt.config.ts#L23).
+Data is fetched within Suspense components to ensure pre-rendered state for the user and SEO. Thus, the initial server response time is increased by about 50–100 ms for the initial KQL page query. This might be a road blocker for you. You can always [pre-render routes](https://nuxt.com/docs/getting-started/prerendering).
 
 ### What's Kirby?
 
