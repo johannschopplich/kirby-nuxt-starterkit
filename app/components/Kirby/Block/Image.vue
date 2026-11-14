@@ -4,11 +4,9 @@ import type { ResolvedKirbyImage } from '~/types/kirby'
 
 const props = defineProps<{
   block: KirbyBlock<
-    'image-resolved',
+    'image',
     {
       location: string
-      // File UUIDs are resolved server-side to the actual image data
-      // See: https://kirby.tools/docs/headless/field-methods
       image: ResolvedKirbyImage[]
       src: string
       alt: string
@@ -28,7 +26,7 @@ if (ratio !== 'auto') {
   size = { w, h }
 }
 
-// Auto sizes for `srcset` attribute if used
+// Auto sizes for the `srcset` attribute.
 const figure = useTemplateRef('figure')
 const { width } = useElementSize(figure)
 </script>
