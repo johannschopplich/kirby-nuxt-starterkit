@@ -2,11 +2,22 @@
 import type { KirbyAlbumData } from '~/queries'
 import { getAlbumQuery } from '~/queries'
 
-const { data } = await useKqlPage<KirbyAlbumData>(
+const { data, error } = await useKqlPage<KirbyAlbumData>(
   getAlbumQuery(useRoute().path),
 )
 
-const page = data.value!.result!
+if (error.value) {
+  throw createError({
+    status: 500,
+    statusText: 'Failed to load the page',
+    fatal: true,
+  })
+}
+
+const page = data.value?.result
+if (!page) {
+  throw createError({ status: 404, statusText: 'Page Not Found', fatal: true })
+}
 setPage(page)
 </script>
 

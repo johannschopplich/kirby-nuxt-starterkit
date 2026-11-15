@@ -2,29 +2,21 @@
 import type { KirbyPageData } from '~/queries'
 import { getPageQuery } from '~/queries'
 
-const { data: pageData } = await useKqlPage<KirbyPageData>(
+const { data, error } = await useKqlPage<KirbyPageData>(
   getPageQuery(useRoute().path),
 )
 
-let data = pageData.value
-
-if (!data?.result) {
-  const { data: errorPageData } = await useKqlPage<KirbyPageData>(
-    getPageQuery('error'),
-    { key: 'page:error' },
-  )
-  data = errorPageData.value
-  const event = useRequestEvent()
-  if (event) setResponseStatus(event, 404)
-}
-
-const page = data?.result
-
-if (!page) {
+if (error.value) {
   throw createError({
     status: 500,
     statusText: 'Failed to load the page',
+    fatal: true,
   })
+}
+
+const page = data.value?.result
+if (!page) {
+  throw createError({ status: 404, statusText: 'Page Not Found', fatal: true })
 }
 
 setPage(page)

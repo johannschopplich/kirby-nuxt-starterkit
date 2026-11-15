@@ -3,9 +3,22 @@ import type { KirbyNoteData } from '~/queries'
 import { getNoteQuery } from '~/queries'
 
 const route = useRoute()
-const { data } = await useKqlPage<KirbyNoteData>(getNoteQuery(route.path))
+const { data, error } = await useKqlPage<KirbyNoteData>(
+  getNoteQuery(route.path),
+)
 
-const page = data.value!.result!
+if (error.value) {
+  throw createError({
+    status: 500,
+    statusText: 'Failed to load the page',
+    fatal: true,
+  })
+}
+
+const page = data.value?.result
+if (!page) {
+  throw createError({ status: 404, statusText: 'Page Not Found', fatal: true })
+}
 setPage(page)
 
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
