@@ -8,14 +8,13 @@ const { data } = await useKqlPage<KirbyNoteData>(getNoteQuery(route.path))
 const page = data.value!.result!
 setPage(page)
 
-const coverUrl = page.cover?.url
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
 </script>
 
 <template>
   <div>
-    <div v-if="coverUrl" class="img" style="--w: 2; --h: 1">
-      <img :src="coverUrl" alt="" />
+    <div v-if="page.cover" class="img" style="--w: 2; --h: 1">
+      <img :src="page.cover.url" :alt="page.cover.alt ?? ''" />
     </div>
 
     <article class="note">

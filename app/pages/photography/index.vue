@@ -22,7 +22,12 @@ setPage(page)
         <NuxtLink :to="`/${album.id}`">
           <figure>
             <span class="img" style="--w: 4; --h: 5">
-              <img :src="album?.cover?.cropped?.url" :alt="album?.cover?.alt" />
+              <img
+                v-if="album.cover"
+                :src="album.cover.cropped.url"
+                :alt="album.cover.alt ?? ''"
+                :loading="index < 4 ? undefined : 'lazy'"
+              />
             </span>
             <figcaption class="img-caption">
               {{ album.title }}

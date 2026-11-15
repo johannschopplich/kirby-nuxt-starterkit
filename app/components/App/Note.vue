@@ -1,21 +1,29 @@
 <script setup lang="ts">
+import type { KirbyNoteCardData, KirbyNoteExcerptData } from '~/queries'
+
 defineProps<{
-  note?: Record<string, any>
+  note: KirbyNoteCardData | KirbyNoteExcerptData
   excerpt?: boolean
+  isEager?: boolean
 }>()
 </script>
 
 <template>
   <article class="note-excerpt">
-    <NuxtLink :to="`/${note?.id}`">
+    <NuxtLink :to="`/${note.id}`">
       <header>
         <figure class="img" style="--w: 16; --h: 9">
-          <img :src="note?.cover?.url" alt="" />
+          <img
+            v-if="note.cover"
+            :src="note.cover.url"
+            :alt="note.cover.alt ?? ''"
+            :loading="isEager ? undefined : 'lazy'"
+          />
         </figure>
 
-        <h2 class="note-excerpt-title">{{ note?.title }}</h2>
+        <h2 class="note-excerpt-title">{{ note.title }}</h2>
         <time
-          v-if="note?.published"
+          v-if="note.published"
           class="note-excerpt-date"
           :datetime="note.date"
         >
@@ -23,8 +31,8 @@ defineProps<{
         </time>
       </header>
 
-      <div v-if="excerpt" class="note-excerpt-text">
-        {{ note?.text }}
+      <div v-if="excerpt && 'text' in note" class="note-excerpt-text">
+        {{ note.text }}
       </div>
     </NuxtLink>
   </article>

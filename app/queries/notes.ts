@@ -9,8 +9,8 @@ export interface KirbyNoteCardData {
   date: string
   published: string
   cover: {
-    id: string
     url: string
+    alt: string | null
   } | null
 }
 
@@ -32,7 +32,10 @@ export const noteCardQuerySelects = {
   published: 'page.date.toDate("d MMM, y")',
   cover: {
     query: 'page.content.cover.toFile ?? page.image',
-    select: ['id', 'url'],
+    select: {
+      url: 'file.crop(320, 180).url',
+      alt: true,
+    },
   },
 } satisfies KirbyQuerySchema['select']
 

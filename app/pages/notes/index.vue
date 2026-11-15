@@ -35,7 +35,7 @@ const notes = computed(() =>
         class="column"
         style="--columns: 4"
       >
-        <AppNote :note="item" :excerpt="true" />
+        <AppNote :note="item" :excerpt="true" :is-eager="index < 3" />
       </li>
     </ul>
   </div>

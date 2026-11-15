@@ -12,8 +12,8 @@ export interface KirbyNoteData extends KirbySharedPageData {
   date: string
   published: string
   cover: {
-    id: string
     url: string
+    alt: string | null
   } | null
   prev: KirbyNoteCardData | null
   next: KirbyNoteCardData | null
@@ -31,7 +31,10 @@ export function getNoteQuery(pageId: string): KirbyQuerySchema {
       published: 'page.date.toDate("d MMM, y")',
       cover: {
         query: 'page.content.cover.toFile ?? page.image',
-        select: ['id', 'url'],
+        select: {
+          url: 'file.crop(1200, 600).url',
+          alt: true,
+        },
       },
       // KQL refuses `prevListed` and `nextListed`.
       prev: {

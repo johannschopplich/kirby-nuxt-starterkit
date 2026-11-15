@@ -16,7 +16,13 @@ setPage(page)
       <li v-for="(album, index) in page.albums" :key="index">
         <NuxtLink :to="`/${album.id}`">
           <figure>
-            <img :src="album?.cover?.resized?.url" :alt="album?.cover?.alt" />
+            <img
+              v-if="album.cover"
+              :src="album.cover.resized.url"
+              :alt="album.cover.alt ?? ''"
+              :loading="index === 0 ? undefined : 'lazy'"
+              :fetchpriority="index === 0 ? 'high' : undefined"
+            />
             <figcaption>
               <span>
                 <span class="example-name">{{ album.title }}</span>

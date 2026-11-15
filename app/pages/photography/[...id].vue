@@ -32,7 +32,8 @@ setPage(page)
               <ElementMediumZoom
                 :src="image.resized.url"
                 :data-zoom-src="image.url"
-                :alt="image.alt"
+                :alt="image.alt ?? ''"
+                :loading="index < 2 ? undefined : 'lazy'"
               />
             </figure>
           </li>
