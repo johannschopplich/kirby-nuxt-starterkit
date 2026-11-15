@@ -3,7 +3,7 @@ import type { KirbyNoteCardData, KirbyNoteExcerptData } from '~/queries'
 
 defineProps<{
   note: KirbyNoteCardData | KirbyNoteExcerptData
-  excerpt?: boolean
+  isExcerpt?: boolean
   isEager?: boolean
 }>()
 </script>
@@ -31,7 +31,7 @@ defineProps<{
         </time>
       </header>
 
-      <div v-if="excerpt && 'text' in note" class="note-excerpt-text">
+      <div v-if="isExcerpt && 'text' in note" class="note-excerpt-text">
         {{ note.text }}
       </div>
     </NuxtLink>

@@ -63,7 +63,7 @@ function getPageLink(page: number): RouteLocationRaw {
         class="column"
         style="--columns: 4"
       >
-        <AppNote :note="item" :excerpt="true" :is-eager="index < 3" />
+        <AppNote :note="item" :is-excerpt="true" :is-eager="index < 3" />
       </li>
     </ul>
 
