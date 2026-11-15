@@ -277,27 +277,19 @@ hr {
 
 .video,
 .img {
-  position: relative;
   display: block;
   --w: 1;
   --h: 1;
-  padding-bottom: calc(100% / var(--w) * var(--h));
+  aspect-ratio: var(--w) / var(--h);
   background: var(--color-black);
 }
 .img img,
 .video iframe {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   border: 0;
-}
-.img[data-contain] img {
-  object-fit: contain;
 }
 .img-caption,
 .video-caption {
