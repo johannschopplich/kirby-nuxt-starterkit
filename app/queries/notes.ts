@@ -5,7 +5,9 @@ import { sharedQuerySelects } from './page'
 export interface KirbyNoteCardData {
   id: string
   title: string
-  published: number
+  /** ISO 8601 date for the `datetime` attribute. */
+  date: string
+  published: string
   cover: {
     id: string
     url: string
@@ -26,7 +28,8 @@ export interface KirbyNotesData extends KirbySharedPageData {
 export const noteCardQuerySelects = {
   id: true,
   title: true,
-  published: 'page.date.toDate',
+  date: 'page.date.toDate("yyyy-MM-dd")',
+  published: 'page.date.toDate("d MMM, y")',
   cover: {
     query: 'page.content.cover.toFile ?? page.image',
     select: ['id', 'url'],

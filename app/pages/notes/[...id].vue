@@ -10,14 +10,6 @@ setPage(page)
 
 const coverUrl = page.cover?.url
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
-
-function formatDateShort(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  }).format(date)
-}
 </script>
 
 <template>
@@ -45,13 +37,8 @@ function formatDateShort(date: Date) {
           </li>
         </ul>
 
-        <time
-          v-if="page.published"
-          class="note-date"
-          :datetime="page.published"
-        >
-          Published on
-          {{ formatDateShort(new Date(page.published * 1000)) }}
+        <time v-if="page.published" class="note-date" :datetime="page.date">
+          Published on {{ page.published }}
         </time>
       </footer>
 

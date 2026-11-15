@@ -8,7 +8,9 @@ export interface KirbyNoteData extends KirbySharedPageData {
   subheading: string
   tags: string[]
   text: KirbyBlock[]
-  published: number
+  /** ISO 8601 date for the `datetime` attribute. */
+  date: string
+  published: string
   cover: {
     id: string
     url: string
@@ -25,7 +27,8 @@ export function getNoteQuery(pageId: string): KirbyQuerySchema {
       subheading: true,
       tags: 'page.tags.split(",")',
       text: 'page.text.toResolvedBlocks',
-      published: 'page.date.toDate',
+      date: 'page.date.toDate("yyyy-MM-dd")',
+      published: 'page.date.toDate("d MMM, y")',
       cover: {
         query: 'page.content.cover.toFile ?? page.image',
         select: ['id', 'url'],

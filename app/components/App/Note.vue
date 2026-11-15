@@ -3,14 +3,6 @@ defineProps<{
   note?: Record<string, any>
   excerpt?: boolean
 }>()
-
-function formatDateShort(date: Date) {
-  return new Intl.DateTimeFormat('en-US', {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
-  }).format(date)
-}
 </script>
 
 <template>
@@ -25,9 +17,9 @@ function formatDateShort(date: Date) {
         <time
           v-if="note?.published"
           class="note-excerpt-date"
-          :datetime="note.published"
+          :datetime="note.date"
         >
-          {{ formatDateShort(new Date(note.published * 1000)) }}
+          {{ note.published }}
         </time>
       </header>
 
