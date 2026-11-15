@@ -12,6 +12,7 @@ import {
 
 defineProps<{
   blocks: KirbyBlock[]
+  isAboveFold?: boolean
 }>()
 
 const blockComponents: Record<string, Component> = {
@@ -30,7 +31,15 @@ useInternalLinks(content)
 <template>
   <div ref="content">
     <template v-for="(block, index) in blocks" :key="index">
-      <component :is="blockComponents[block.type]" :block="block" />
+      <component
+        :is="blockComponents[block.type]"
+        :block="block"
+        v-bind="
+          isAboveFold && index === 0 && block.type === 'image'
+            ? { isEager: true }
+            : {}
+        "
+      />
     </template>
   </div>
 </template>

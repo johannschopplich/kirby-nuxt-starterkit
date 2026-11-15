@@ -14,7 +14,7 @@ function span(width: `${string}/${string}`, columns = 12) {
 <template>
   <div>
     <section
-      v-for="layout in layouts"
+      v-for="(layout, layoutIndex) in layouts"
       :id="layout.id"
       :key="layout.id"
       class="grid margin-xl"
@@ -26,7 +26,11 @@ function span(width: `${string}/${string}`, columns = 12) {
         class="column"
         :style="`--columns: ${span(column.width)}`"
       >
-        <KirbyBlocks :blocks="column.blocks" class="text" />
+        <KirbyBlocks
+          :blocks="column.blocks"
+          :is-above-fold="layoutIndex === 0"
+          class="text"
+        />
       </div>
     </section>
   </div>

@@ -16,43 +16,31 @@ const props = defineProps<{
       crop: 'true' | 'false'
     }
   >
+  isEager?: boolean
 }>()
 
-const ratio = props.block.content.ratio || 'auto'
-let size: { w?: string; h?: string } = {}
-
-if (ratio !== 'auto') {
-  const [w = '1', h = '1'] = ratio.split('/')
-  size = { w, h }
-}
-
-// Auto sizes for the `srcset` attribute.
-const figure = useTemplateRef('figure')
-const { width } = useElementSize(figure)
+const isWeb = props.block.content.location === 'web'
+const image = isWeb ? undefined : props.block.content.image?.[0]
+const src = isWeb ? props.block.content.src : image?.url
 </script>
 
 <template>
-  <figure ref="figure">
-    <component
-      :is="block.content.link ? 'a' : 'div'"
-      :href="block.content.link || undefined"
-      :data-contain="block.content.crop === 'false' || undefined"
-      :class="[ratio === 'auto' ? 'auto' : 'img']"
-      :style="`--w: ${size.w}; --h: ${size.h};`"
-    >
+  <figure v-if="src">
+    <a :href="block.content.link || src">
       <img
-        :src="block.content.location === 'web' ? block.content.src : undefined"
-        :srcset="
-          block.content.location !== 'web'
-            ? block.content.image?.[0]?.srcset
-            : undefined
-        "
-        :width="block.content.image?.[0]?.width"
-        :height="block.content.image?.[0]?.height"
-        :sizes="`${width}px`"
-        :alt="block.content.alt || block.content.image?.[0]?.alt || ''"
+        :src="src"
+        :srcset="image?.srcset"
+        :width="image?.width"
+        :height="image?.height"
+        :sizes="image ? 'auto, 100vw' : undefined"
+        :loading="isEager ? undefined : 'lazy'"
+        :alt="block.content.alt || image?.alt || ''"
+        :style="{
+          aspectRatio: block.content.ratio || undefined,
+          objectFit: block.content.crop === 'false' ? 'contain' : 'cover',
+        }"
       />
-    </component>
+    </a>
 
     <figcaption
       v-if="block.content.caption"
