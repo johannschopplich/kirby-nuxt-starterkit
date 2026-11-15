@@ -15,6 +15,8 @@ useInternalLinks(content)
 
 <template>
   <div>
+    <AppIntro />
+
     <KirbyLayouts :layouts="page.layouts" />
 
     <aside class="contact">
@@ -27,9 +29,15 @@ useInternalLinks(content)
 
         <section class="column text" style="--columns: 4">
           <h3>Email</h3>
-          <p v-html="page.email" />
+          <p>
+            <a :href="`mailto:${page.email}`">{{ page.email }}</a>
+          </p>
           <h3>Phone</h3>
-          <p v-html="page.phone" />
+          <p>
+            <a :href="`tel:${page.phone.replace(/[^0-9+]/g, '')}`">
+              {{ page.phone }}
+            </a>
+          </p>
         </section>
 
         <section class="column text" style="--columns: 4">
