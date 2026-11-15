@@ -3,22 +3,19 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { KirbyNotesData } from '~/queries'
 import { getNotesQuery } from '~/queries'
 
-// Remounts on a query change, so the 404 check below runs for every page and tag.
-definePageMeta({ key: (route) => route.fullPath })
+// Remounts on a query change, so the setup below runs again.
+definePageMeta({ key: (route) => route.fullPath.split('#')[0]! })
 
 const route = useRoute()
-const tag = computed(() =>
+const tag =
   typeof route.query.tag === 'string' && route.query.tag
     ? route.query.tag
-    : undefined,
-)
-const currentPage = computed(
-  () => Math.max(Number.parseInt(String(route.query.page)), 1) || 1,
-)
+    : undefined
+const currentPage = Math.max(Number.parseInt(String(route.query.page)), 1) || 1
 
 const { data, error } = await useKqlPage<KirbyNotesData>(
-  () => getNotesQuery({ tag: tag.value, page: currentPage.value }),
-  { key: () => `page:${route.path}:${tag.value ?? ''}:${currentPage.value}` },
+  getNotesQuery({ tag, page: currentPage }),
+  { key: `page:${route.path}:${tag ?? ''}:${currentPage}` },
 )
 
 if (error.value) {
@@ -32,20 +29,20 @@ if (error.value) {
 const page = data.value?.result
 // Kirby answers a page past the last one with the last page, and an empty list
 // with zero pages.
-if (!page || currentPage.value > Math.max(page.children.pagination.pages, 1)) {
+if (!page || currentPage > Math.max(page.children.pagination.pages, 1)) {
   throw createError({ status: 404, statusText: 'Page Not Found', fatal: true })
 }
 
 setPage(page, {
-  canonicalPath: useRouter().resolve(getPageLink(currentPage.value)).fullPath,
+  canonicalPath: useRouter().resolve(getPageLink(currentPage)).fullPath,
 })
 
-const notes = computed(() => data.value?.result?.children)
+const notes = page.children
 
 function getPageLink(page: number): RouteLocationRaw {
   return {
     path: route.path,
-    query: { tag: tag.value, page: page > 1 ? page : undefined },
+    query: { tag, page: page > 1 ? page : undefined },
   }
 }
 </script>
@@ -63,7 +60,7 @@ function getPageLink(page: number): RouteLocationRaw {
 
     <ul class="grid">
       <li
-        v-for="(item, index) in notes?.data"
+        v-for="(item, index) in notes.data"
         :key="item.id"
         class="column"
         style="--columns: 4"
@@ -73,7 +70,7 @@ function getPageLink(page: number): RouteLocationRaw {
     </ul>
 
     <!-- Vue Router ignores the query when it marks the current page, so the page links opt out of `aria-current`. -->
-    <nav v-if="notes && notes.pagination.pages > 1" class="pagination">
+    <nav v-if="notes.pagination.pages > 1" class="pagination">
       <NuxtLink
         v-if="notes.pagination.page > 1"
         class="pagination-prev"
