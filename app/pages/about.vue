@@ -2,11 +2,9 @@
 import type { KirbyAboutData } from '~/queries'
 import { getAboutQuery } from '~/queries'
 
-const { data } = await useKqlPage<KirbyAboutData>(
-  getAboutQuery(useRoute().path),
+const page = getPageOrThrow(
+  await useKqlPage<KirbyAboutData>(getAboutQuery(useRoute().path)),
 )
-
-const page = data.value!.result!
 setPage(page)
 </script>
 

@@ -2,9 +2,9 @@
 import type { KirbyPhotographyData } from '~/queries'
 import { photographyQuery } from '~/queries'
 
-const { data } = await useKqlPage<KirbyPhotographyData>(photographyQuery)
-
-const page = data.value!.result!
+const page = getPageOrThrow(
+  await useKqlPage<KirbyPhotographyData>(photographyQuery),
+)
 setPage(page)
 </script>
 

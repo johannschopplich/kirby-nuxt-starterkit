@@ -2,9 +2,7 @@
 import type { KirbyHomeData } from '~/queries'
 import { homeQuery } from '~/queries'
 
-const { data } = await useKqlPage<KirbyHomeData>(homeQuery)
-
-const page = data.value!.result!
+const page = getPageOrThrow(await useKqlPage<KirbyHomeData>(homeQuery))
 setPage(page)
 </script>
 

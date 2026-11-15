@@ -13,25 +13,14 @@ const tag =
     : undefined
 const currentPage = Math.max(Number.parseInt(String(route.query.page)), 1) || 1
 
-const { data, error } = await useKqlPage<KirbyNotesData>(
-  getNotesQuery({ tag, page: currentPage }),
-  { key: `page:${route.path}:${tag ?? ''}:${currentPage}` },
+const page = getPageOrThrow(
+  await useKqlPage<KirbyNotesData>(getNotesQuery({ tag, page: currentPage }), {
+    key: `page:${route.path}:${tag ?? ''}:${currentPage}`,
+  }),
+  // Kirby answers a page past the last one with the last page, and an empty
+  // list with zero pages.
+  (page) => currentPage > Math.max(page.children.pagination.pages, 1),
 )
-
-if (error.value) {
-  throw createError({
-    status: 500,
-    statusText: 'Failed to load the page',
-    fatal: true,
-  })
-}
-
-const page = data.value?.result
-// Kirby answers a page past the last one with the last page, and an empty list
-// with zero pages.
-if (!page || currentPage > Math.max(page.children.pagination.pages, 1)) {
-  throw createError({ status: 404, statusText: 'Page Not Found', fatal: true })
-}
 
 setPage(page, {
   canonicalPath: useRouter().resolve(getPageLink(currentPage)).fullPath,
