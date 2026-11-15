@@ -2,12 +2,16 @@
 import type { KirbyBlock } from 'kirby-types'
 import type { Component } from 'vue'
 import {
+  LazyKirbyBlockCode,
+  LazyKirbyBlockGallery,
   LazyKirbyBlockHeading,
   LazyKirbyBlockImage,
   LazyKirbyBlockLine,
   LazyKirbyBlockList,
+  LazyKirbyBlockMarkdown,
   LazyKirbyBlockQuote,
   LazyKirbyBlockText,
+  LazyKirbyBlockVideo,
 } from '#components'
 
 defineProps<{
@@ -16,12 +20,16 @@ defineProps<{
 }>()
 
 const blockComponents: Record<string, Component> = {
+  code: LazyKirbyBlockCode,
+  gallery: LazyKirbyBlockGallery,
   heading: LazyKirbyBlockHeading,
   image: LazyKirbyBlockImage,
   line: LazyKirbyBlockLine,
   list: LazyKirbyBlockList,
+  markdown: LazyKirbyBlockMarkdown,
   quote: LazyKirbyBlockQuote,
   text: LazyKirbyBlockText,
+  video: LazyKirbyBlockVideo,
 }
 
 const content = useTemplateRef('content')

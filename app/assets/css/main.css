@@ -34,7 +34,8 @@ html {
   color: var(--color-text);
   background: var(--color-background);
 }
-img {
+img,
+video {
   width: 100%;
   height: auto;
 }
@@ -237,6 +238,16 @@ h6 {
 .text figcaption {
   padding-top: 0.75rem;
   color: var(--color-text-grey);
+}
+.text figure ul {
+  line-height: 0;
+  display: grid;
+  gap: 1.5rem;
+  margin: 0;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+}
+.text figure ul li {
+  list-style: none;
 }
 
 hr {

@@ -35,10 +35,7 @@ const src = isWeb ? props.block.content.src : image?.url
         :sizes="image ? 'auto, 100vw' : undefined"
         :loading="isEager ? undefined : 'lazy'"
         :alt="block.content.alt || image?.alt || ''"
-        :style="{
-          aspectRatio: block.content.ratio || undefined,
-          objectFit: block.content.crop === 'false' ? 'contain' : 'cover',
-        }"
+        :style="getBlockImageStyle(block.content)"
       />
     </a>
 
