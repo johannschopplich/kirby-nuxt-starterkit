@@ -1,4 +1,5 @@
 import type { HookResult } from '@nuxt/schema'
+import type { KirbySharedPageData } from '~/queries'
 import { joinURL } from 'ufo'
 
 /**
@@ -8,7 +9,7 @@ export function usePage<T extends Record<string, any> = Record<string, any>>() {
   return useState<T>('app.page', () => ({}) as T)
 }
 
-export function setPage<T extends Record<string, any>>(
+export function setPage<T extends KirbySharedPageData & Record<string, any>>(
   page: T,
   options: {
     /** Path for the canonical URL, if the route's query matters for it. */
@@ -24,6 +25,7 @@ export function setPage<T extends Record<string, any>>(
     : site.value.title
   const description = page.description || site.value.description
   const url = joinURL(siteUrl, options.path ?? useRoute().path)
+  const image = page.cover?.url
 
   useHead({
     bodyAttrs: {
@@ -46,8 +48,11 @@ export function setPage<T extends Record<string, any>>(
       ogDescription: description,
       ogUrl: url,
       ogType: 'website',
+      ...(image && { ogImage: image }),
       twitterTitle: title,
       twitterDescription: description,
+      twitterCard: image ? 'summary_large_image' : 'summary',
+      ...(image && { twitterImage: image }),
     })
   }
 
