@@ -3,6 +3,7 @@ import type { KirbySharedPageData } from './page'
 import { sharedQuerySelects } from './page'
 
 export interface KirbyAlbumData extends KirbySharedPageData {
+  headline: string
   subheadline: string
   text: string
   gallery: {
@@ -19,6 +20,7 @@ export function getAlbumQuery(pageId: string): KirbyQuerySchema {
     query: `page("${pageId}")`,
     select: {
       ...sharedQuerySelects,
+      headline: true,
       subheadline: true,
       text: true,
       gallery: {
