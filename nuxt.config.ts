@@ -16,4 +16,8 @@ export default defineNuxtConfig({
   prerender: {
     routes: ['/'],
   },
+
+  routeRules: {
+    '/home': { redirect: { to: '/', statusCode: 302 } },
+  },
 })
