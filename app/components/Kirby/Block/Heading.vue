@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { KirbyBlock } from 'kirby-types'
-import slugify from '@sindresorhus/slugify'
 
 defineProps<{
   block: KirbyBlock<'heading'>
@@ -8,10 +7,7 @@ defineProps<{
 </script>
 
 <template>
-  <component
-    :is="block.content.level || 'h2'"
-    :id="slugify(block.content.text)"
-  >
+  <component :is="block.content.level || 'h2'">
     <span v-html="block.content.text" />
   </component>
 </template>
