@@ -5,8 +5,6 @@ import { sharedQuerySelects } from './page'
 export interface KirbyNoteCardData {
   id: string
   title: string
-  tags: string[]
-  text: string
   published: number
   cover: {
     id: string
@@ -14,11 +12,26 @@ export interface KirbyNoteCardData {
   } | null
 }
 
+export interface KirbyNoteExcerptData extends KirbyNoteCardData {
+  tags: string[]
+  text: string
+}
+
 export interface KirbyNotesData extends KirbySharedPageData {
   subheadline: string
   text: string
-  children: KirbyNoteCardData[]
+  children: KirbyNoteExcerptData[]
 }
+
+export const noteCardQuerySelects = {
+  id: true,
+  title: true,
+  published: 'page.date.toDate',
+  cover: {
+    query: 'page.content.cover.toFile ?? page.image',
+    select: ['id', 'url'],
+  },
+} satisfies KirbyQuerySchema['select']
 
 export const notesQuery: KirbyQuerySchema = {
   query: 'page("notes")',
@@ -29,15 +42,9 @@ export const notesQuery: KirbyQuerySchema = {
     children: {
       query: 'page.children.listed.sortBy("date", "desc")',
       select: {
-        id: true,
-        title: true,
+        ...noteCardQuerySelects,
         tags: 'page.tags.split(",")',
         text: 'page.text.toResolvedBlocks.excerpt(280)',
-        published: 'page.date.toDate',
-        cover: {
-          query: 'page.content.cover.toFile ?? page.image',
-          select: ['id', 'url'],
-        },
       },
     },
   },

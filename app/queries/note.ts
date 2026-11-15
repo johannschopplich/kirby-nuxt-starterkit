@@ -1,5 +1,7 @@
 import type { KirbyBlock, KirbyQuerySchema } from 'kirby-types'
+import type { KirbyNoteCardData } from './notes'
 import type { KirbySharedPageData } from './page'
+import { noteCardQuerySelects } from './notes'
 import { sharedQuerySelects } from './page'
 
 export interface KirbyNoteData extends KirbySharedPageData {
@@ -11,6 +13,8 @@ export interface KirbyNoteData extends KirbySharedPageData {
     id: string
     url: string
   } | null
+  prev: KirbyNoteCardData | null
+  next: KirbyNoteCardData | null
 }
 
 export function getNoteQuery(pageId: string): KirbyQuerySchema {
@@ -25,6 +29,15 @@ export function getNoteQuery(pageId: string): KirbyQuerySchema {
       cover: {
         query: 'page.content.cover.toFile ?? page.image',
         select: ['id', 'url'],
+      },
+      // KQL refuses `prevListed` and `nextListed`.
+      prev: {
+        query: 'page.prevAll.listed.last',
+        select: noteCardQuerySelects,
+      },
+      next: {
+        query: 'page.nextAll.listed.first',
+        select: noteCardQuerySelects,
       },
     },
   }
