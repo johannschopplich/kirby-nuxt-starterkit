@@ -1,6 +1,5 @@
 import type { HookResult } from '@nuxt/schema'
 import type { KirbySharedPageData } from '~/queries'
-import { joinURL } from 'ufo'
 
 /**
  * Returns the currently active page, similar to Kirby's `$page` global variable.
@@ -24,7 +23,8 @@ export function setPage<T extends KirbySharedPageData & Record<string, any>>(
     ? `${page.title} – ${site.value.title}`
     : site.value.title
   const description = page.description || site.value.description
-  const url = joinURL(siteUrl, options.path ?? useRoute().path)
+  const path = options.path ?? useRoute().path
+  const url = siteUrl.replace(/\/+$/, '') + path
   const image = page.cover?.url
 
   useHead({

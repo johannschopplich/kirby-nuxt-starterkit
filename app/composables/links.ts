@@ -14,12 +14,8 @@ export function useInternalLinks(
       }
     }
 
-    const handleAnchorClicks = (
-      event: MouseEvent & {
-        target: HTMLElement
-      },
-    ) => {
-      const link = event.target.closest('a')
+    const handleAnchorClicks = (event: MouseEvent) => {
+      const link = (event.target as HTMLElement).closest('a')
 
       if (
         !event.defaultPrevented &&
@@ -48,7 +44,14 @@ export function useInternalLinks(
       }
     }
 
-    useEventListener(window, 'hashchange', scrollToHash)
-    useEventListener(element, 'click', handleAnchorClicks)
+    onMounted(() => {
+      window.addEventListener('hashchange', scrollToHash)
+      toValue(element)?.addEventListener('click', handleAnchorClicks)
+    })
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('hashchange', scrollToHash)
+      toValue(element)?.removeEventListener('click', handleAnchorClicks)
+    })
   }
 }

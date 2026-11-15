@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-  modules: ['@vueuse/nuxt', 'nuxt-kirby'],
+  modules: ['nuxt-kirby'],
 
   compatibilityDate: '2026-11-01',
 

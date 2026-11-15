@@ -18,14 +18,12 @@
   "devDependencies": {
     "@antfu/eslint-config": "^10.0.0",
     "@types/node": "^26.6.6",
-    "@vueuse/nuxt": "^15.0.0",
     "eslint": "^10.14.0",
     "kirby-types": "^1.8.2",
     "nuxt": "^4.6.4",
     "nuxt-kirby": "^5.0.0",
     "prettier": "^3.10.1",
     "typescript": "^6.0.3",
-    "ufo": "^1.6.4",
     "vue-tsc": "^3.3.14"
   }
 }
