@@ -21,7 +21,7 @@ This repository ports the [Kirby Starter Kit](https://github.com/getkirby/starte
 
 - 🫂 Kirby Query Language with [`nuxt-kirby`](https://nuxt-kirby.byjohann.dev)
 - 🪁 [Component-based Kirby blocks](./app/components/Kirby/Block/)
-- 🏛 Global [site data](./app/plugins/site.server.ts) similar to Kirby's `$site`
+- 🏛 Global [site data](./app/composables/site.ts) similar to Kirby's `$site`
 - 🗳 [Queries](./app/queries/) for pre-defined KQL requests
 - 🔎 Server-rendered SEO metadata
 - 📐 Prettier & ESLint
@@ -34,7 +34,6 @@ app/
 ├── components/Kirby/       # Block and layout renderers
 ├── composables/            # Page and site data, SEO metadata, and links
 ├── pages/                  # Home, about, notes, photography, and a catch-all for every other Kirby page
-├── plugins/site.server.ts  # Site data, fetched on the server with each render
 └── queries/                # KQL queries and their response types
 shared/types/kirby.ts       # `ResolvedKirbyImage` type
 ```
@@ -64,7 +63,7 @@ In a fork, change:
 
 For another host, build with `pnpm run build` and follow the [Nuxt deployment docs](https://nuxt.com/docs/getting-started/deployment).
 
-A server-rendered page waits for the site and page KQL queries before it responds. The home page is [prerendered](https://nuxt.com/docs/getting-started/prerendering) at build time, so its content updates with the next deploy; add other pages whose content can wait for a deploy to `prerender.routes` in `nuxt.config.ts`.
+A server-rendered page waits for its KQL query, which carries the site data too, before it responds. The home page is [prerendered](https://nuxt.com/docs/getting-started/prerendering) at build time, so its content updates with the next deploy; add other pages whose content can wait for a deploy to `prerender.routes` in `nuxt.config.ts`.
 
 ## License
 
