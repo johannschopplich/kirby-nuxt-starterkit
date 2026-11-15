@@ -13,9 +13,14 @@ const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
 
 <template>
   <div>
-    <div v-if="page.cover" class="img" style="--w: 2; --h: 1">
+    <a
+      v-if="page.cover"
+      :href="page.cover.original"
+      class="img"
+      style="--w: 2; --h: 1"
+    >
       <img :src="page.cover.url" :alt="page.cover.alt ?? ''" />
-    </div>
+    </a>
 
     <article class="note">
       <header class="note-header h1">

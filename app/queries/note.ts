@@ -13,6 +13,7 @@ export interface KirbyNoteData extends KirbySharedPageData {
   published: string
   cover: {
     url: string
+    original: string
     alt: string | null
   } | null
   prev: KirbyNoteCardData | null
@@ -33,6 +34,7 @@ export function getNoteQuery(pageId: string): KirbyQuerySchema {
         query: 'page.content.cover.toFile ?? page.image',
         select: {
           url: 'file.crop(1200, 600).url',
+          original: 'file.url',
           alt: true,
         },
       },

@@ -22,20 +22,18 @@ setPage(page)
       <div class="column" style="--columns: 8">
         <ul class="album-gallery">
           <li v-for="(image, index) in page.gallery" :key="index">
-            <figure
-              class="img"
-              :style="`
-                  --w: ${image.width};
-                  --h: ${image.height};
-                `"
-            >
-              <ElementMediumZoom
-                :src="image.resized.url"
-                :data-zoom-src="image.url"
-                :alt="image.alt ?? ''"
-                :loading="index < 2 ? undefined : 'lazy'"
-              />
-            </figure>
+            <a :href="image.url">
+              <figure
+                class="img"
+                :style="`--w: ${image.width}; --h: ${image.height}`"
+              >
+                <img
+                  :src="image.resized.url"
+                  :alt="image.alt ?? ''"
+                  :loading="index < 2 ? undefined : 'lazy'"
+                />
+              </figure>
+            </a>
           </li>
         </ul>
       </div>
