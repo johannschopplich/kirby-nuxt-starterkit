@@ -8,9 +8,6 @@ const { data } = await useKqlPage<KirbyAboutData>(
 
 const page = data.value!.result!
 setPage(page)
-
-const content = useTemplateRef('content')
-useInternalLinks(content)
 </script>
 
 <template>
@@ -21,7 +18,7 @@ useInternalLinks(content)
 
     <aside class="contact">
       <h2 class="h1">Get in contact</h2>
-      <div ref="content" class="grid" style="--gutter: 1.5rem">
+      <div class="grid" style="--gutter: 1.5rem">
         <section class="column text" style="--columns: 4">
           <h3>Address</h3>
           <div v-html="page.address" />

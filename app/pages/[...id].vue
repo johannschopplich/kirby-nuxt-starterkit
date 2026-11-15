@@ -28,14 +28,11 @@ if (!page) {
 }
 
 setPage(page)
-
-const content = useTemplateRef('content')
-useInternalLinks(content)
 </script>
 
 <template>
   <article>
     <h1 class="h1">{{ page.title }}</h1>
-    <div ref="content" class="text" v-html="page.text" />
+    <div class="text" v-html="page.text" />
   </article>
 </template>
