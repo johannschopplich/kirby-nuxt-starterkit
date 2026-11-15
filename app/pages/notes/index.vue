@@ -1,17 +1,18 @@
 <script setup lang="ts">
+import type { KirbyNotesResponse } from '~/queries'
 import { notesQuery } from '~/queries'
 
 const route = useRoute()
-const { data } = await useKql(notesQuery)
+const { data } = await useKql<KirbyNotesResponse>(notesQuery)
 
-const page = data.value?.result
+const page = data.value!.result!
 setPage(page)
 
 const tag = computed(() => route.query.tag as string)
 
 const notes = computed(() =>
-  (page?.children ?? []).filter((i: any) =>
-    tag.value ? i.tags?.includes(tag.value) : true,
+  page.children.filter((note) =>
+    tag.value ? note.tags.includes(tag.value) : true,
   ),
 )
 </script>

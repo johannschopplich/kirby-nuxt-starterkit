@@ -1,33 +1,10 @@
 <script setup lang="ts">
-const { data } = await useKql({
-  query: 'page("photography")',
-  select: {
-    id: true,
-    title: true,
-    intendedTemplate: true,
-    subheadline: true,
-    children: {
-      query: 'page.children.listed',
-      select: {
-        id: true,
-        title: true,
-        cover: {
-          query: 'page.content.cover.toFile ?? page.image',
-          select: {
-            cropped: {
-              query: 'file.crop(400, 500)',
-              select: ['url'],
-            },
-            url: true,
-            alt: true,
-          },
-        },
-      },
-    },
-  },
-})
+import type { KirbyPhotographyResponse } from '~/queries'
+import { photographyQuery } from '~/queries'
 
-const page = data.value?.result
+const { data } = await useKql<KirbyPhotographyResponse>(photographyQuery)
+
+const page = data.value!.result!
 setPage(page)
 </script>
 
@@ -37,7 +14,7 @@ setPage(page)
 
     <ul class="grid" style="--gutter: 1.5rem">
       <li
-        v-for="(album, index) in page?.children ?? []"
+        v-for="(album, index) in page.children"
         :key="index"
         class="column"
         style="--columns: 3"

@@ -1,10 +1,31 @@
-import type { KirbyQuerySchema } from 'kirby-types'
+import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
+import type { KirbySharedPageData } from './page'
+import { sharedQuerySelects } from './page'
+
+export interface KirbyNoteCardData {
+  id: string
+  title: string
+  tags: string[]
+  text: string
+  published: number
+  cover: {
+    id: string
+    url: string
+  } | null
+}
+
+export interface KirbyNotesData extends KirbySharedPageData {
+  subheadline: string
+  text: string
+  children: KirbyNoteCardData[]
+}
+
+export type KirbyNotesResponse = KirbyQueryResponse<KirbyNotesData>
 
 export const notesQuery: KirbyQuerySchema = {
   query: 'page("notes")',
   select: {
-    title: true,
-    intendedTemplate: true,
+    ...sharedQuerySelects,
     subheadline: true,
     text: 'page.text.kirbytext',
     children: {

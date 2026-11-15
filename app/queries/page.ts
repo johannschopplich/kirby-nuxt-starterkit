@@ -1,21 +1,28 @@
 import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
 
-export interface KirbyPageData {
+export interface KirbySharedPageData {
   id: string
   title: string
   intendedTemplate: string
+}
+
+export interface KirbyPageData extends KirbySharedPageData {
   text: string
 }
 
 export type KirbyPageResponse = KirbyQueryResponse<KirbyPageData>
 
+export const sharedQuerySelects = {
+  id: true,
+  title: true,
+  intendedTemplate: true,
+} satisfies KirbyQuerySchema['select']
+
 export function getPageQuery(pageId: string): KirbyQuerySchema {
   return {
     query: `page("${pageId}")`,
     select: {
-      id: true,
-      title: true,
-      intendedTemplate: true,
+      ...sharedQuerySelects,
       text: 'page.text.kirbytext',
     },
   }

@@ -1,35 +1,11 @@
 <script setup lang="ts">
-const { data } = await useKql({
-  query: 'page("home")',
-  select: {
-    id: true,
-    title: true,
-    intendedTemplate: true,
-    headline: true,
-    subheadline: true,
-  },
-})
+import type { KirbyHomeResponse } from '~/queries'
+import { homeQuery } from '~/queries'
 
-const page = data.value?.result
+const { data } = await useKql<KirbyHomeResponse>(homeQuery)
+
+const page = data.value!.result!
 setPage(page)
-
-const { data: photographyData } = await useKql({
-  query: 'page("photography").children.listed',
-  select: {
-    id: true,
-    title: true,
-    cover: {
-      query: 'page.content.cover.toFile ?? page.image',
-      select: {
-        resized: {
-          query: 'file.resize(1024, 1024)',
-          select: ['url'],
-        },
-        alt: true,
-      },
-    },
-  },
-})
 </script>
 
 <template>
@@ -37,7 +13,7 @@ const { data: photographyData } = await useKql({
     <AppIntro />
 
     <ul class="home-grid">
-      <li v-for="(album, index) in photographyData?.result ?? []" :key="index">
+      <li v-for="(album, index) in page.albums" :key="index">
         <NuxtLink :to="`/${album.id}`">
           <figure>
             <img :src="album?.cover?.resized?.url" :alt="album?.cover?.alt" />

@@ -1,29 +1,12 @@
 <script setup lang="ts">
-const { data } = await useKql({
-  query: `page("${useRoute().path}")`,
-  select: {
-    id: true,
-    title: true,
-    intendedTemplate: true,
-    subheadline: true,
-    text: true,
-    gallery: {
-      query: 'page.images.sortBy("sort", "filename")',
-      select: {
-        resized: {
-          query: 'file.resize(800)',
-          select: ['url'],
-        },
-        width: true,
-        height: true,
-        url: true,
-        alt: true,
-      },
-    },
-  },
-})
+import type { KirbyAlbumResponse } from '~/queries'
+import { getAlbumQuery } from '~/queries'
 
-const page = data.value?.result
+const { data } = await useKql<KirbyAlbumResponse>(
+  getAlbumQuery(useRoute().path),
+)
+
+const page = data.value!.result!
 setPage(page)
 </script>
 
@@ -33,12 +16,12 @@ setPage(page)
 
     <div class="grid">
       <div class="column" style="--columns: 4">
-        <div class="text" v-html="page?.text" />
+        <div class="text" v-html="page.text" />
       </div>
 
       <div class="column" style="--columns: 8">
         <ul class="album-gallery">
-          <li v-for="(image, index) in page?.gallery ?? []" :key="index">
+          <li v-for="(image, index) in page.gallery" :key="index">
             <figure
               class="img"
               :style="`

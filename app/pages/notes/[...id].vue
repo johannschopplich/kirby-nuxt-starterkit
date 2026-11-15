@@ -1,26 +1,14 @@
 <script setup lang="ts">
-const route = useRoute()
-const { data } = await useKql({
-  query: `page("${route.path}")`,
-  select: {
-    id: true,
-    title: true,
-    intendedTemplate: true,
-    subheading: true,
-    tags: 'page.tags.split(",")',
-    text: 'page.text.toResolvedBlocks',
-    published: 'page.date.toDate',
-    cover: {
-      query: 'page.content.cover.toFile ?? page.image',
-      select: ['id', 'url'],
-    },
-  },
-})
+import type { KirbyNoteResponse } from '~/queries'
+import { getNoteQuery } from '~/queries'
 
-const page = data.value?.result
+const route = useRoute()
+const { data } = await useKql<KirbyNoteResponse>(getNoteQuery(route.path))
+
+const page = data.value!.result!
 setPage(page)
 
-const coverUrl = page?.cover?.url
+const coverUrl = page.cover?.url
 const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
 
 function formatDateShort(date: Date) {
@@ -40,16 +28,16 @@ function formatDateShort(date: Date) {
 
     <article class="note">
       <header class="note-header h1">
-        <h1 class="note-title">{{ page?.title }}</h1>
-        <p v-if="page?.subheading" class="note-subheading">
-          <small>{{ page?.subheading }}</small>
+        <h1 class="note-title">{{ page.title }}</h1>
+        <p v-if="page.subheading" class="note-subheading">
+          <small>{{ page.subheading }}</small>
         </p>
       </header>
 
-      <KirbyBlocks :blocks="page?.text ?? []" class="note text" />
+      <KirbyBlocks :blocks="page.text" class="note text" />
 
       <footer class="note-footer">
-        <ul v-if="page?.tags" class="note-tags">
+        <ul v-if="page.tags" class="note-tags">
           <li v-for="(tag, index) in page.tags" :key="index">
             <NuxtLink :to="{ path: parentRoute, query: { tag } }">
               {{ tag }}
@@ -58,7 +46,7 @@ function formatDateShort(date: Date) {
         </ul>
 
         <time
-          v-if="page?.published"
+          v-if="page.published"
           class="note-date"
           :datetime="page.published"
         >

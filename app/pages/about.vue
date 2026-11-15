@@ -1,19 +1,12 @@
 <script setup lang="ts">
-const { data } = await useKql({
-  query: `page("${useRoute().path}")`,
-  select: {
-    id: true,
-    title: true,
-    intendedTemplate: true,
-    layouts: 'page.layout.toResolvedLayouts',
-    address: 'page.address.kirbytext',
-    email: true,
-    phone: true,
-    social: 'page.social.toStructure',
-  },
-})
+import type { KirbyAboutResponse } from '~/queries'
+import { getAboutQuery } from '~/queries'
 
-const page = data.value?.result
+const { data } = await useKql<KirbyAboutResponse>(
+  getAboutQuery(useRoute().path),
+)
+
+const page = data.value!.result!
 setPage(page)
 
 const content = useTemplateRef('content')
@@ -22,7 +15,7 @@ useInternalLinks(content)
 
 <template>
   <div>
-    <KirbyLayouts :layouts="page.layouts ?? []" />
+    <KirbyLayouts :layouts="page.layouts" />
 
     <aside class="contact">
       <h2 class="h1">Get in contact</h2>
