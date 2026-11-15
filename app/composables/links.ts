@@ -29,17 +29,16 @@ export function useInternalLinks(
         !event.shiftKey &&
         !event.altKey
       ) {
-        const url = new URL(link.href)
-        const { origin, pathname: path, hash } = url
+        const { origin, pathname: path, search, hash } = new URL(link.href)
         if (origin !== window.location.origin) return
 
         event.preventDefault()
 
-        if (hash && (!path || path === route.path)) {
+        if (hash && path === route.path && search === window.location.search) {
           window.history.replaceState({}, '', link.href)
           scrollToHash()
         } else {
-          navigateTo({ path, hash })
+          navigateTo(path + search + hash)
         }
       }
     }
