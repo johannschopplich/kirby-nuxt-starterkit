@@ -12,7 +12,7 @@ export function setPage<T extends KirbySharedPageData & Record<string, any>>(
   page: T,
   options: {
     /** Path for the canonical URL, if the route's query matters for it. */
-    path?: string
+    canonicalPath?: string
   } = {},
 ) {
   usePage().value = page
@@ -23,7 +23,7 @@ export function setPage<T extends KirbySharedPageData & Record<string, any>>(
     ? `${page.title} – ${site.value.title}`
     : site.value.title
   const description = page.description || site.value.description
-  const path = options.path ?? useRoute().path
+  const path = options.canonicalPath ?? useRoute().path
   const url = siteUrl.replace(/\/+$/, '') + path
   const image = page.cover?.url
 

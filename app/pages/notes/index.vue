@@ -37,7 +37,7 @@ if (!page || currentPage.value > Math.max(page.children.pagination.pages, 1)) {
 }
 
 setPage(page, {
-  path: useRouter().resolve(getPageLink(currentPage.value)).fullPath,
+  canonicalPath: useRouter().resolve(getPageLink(currentPage.value)).fullPath,
 })
 
 const notes = computed(() => data.value?.result?.children)
