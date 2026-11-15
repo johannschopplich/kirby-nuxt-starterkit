@@ -3,6 +3,9 @@ import type { RouteLocationRaw } from 'vue-router'
 import type { KirbyNotesData } from '~/queries'
 import { getNotesQuery } from '~/queries'
 
+// Remounts on a query change, so the 404 check below runs for every page and tag.
+definePageMeta({ key: (route) => route.fullPath })
+
 const route = useRoute()
 const tag = computed(() =>
   typeof route.query.tag === 'string' && route.query.tag
@@ -27,7 +30,9 @@ if (error.value) {
 }
 
 const page = data.value?.result
-if (!page) {
+// Kirby answers a page past the last one with the last page, and an empty list
+// with zero pages.
+if (!page || currentPage.value > Math.max(page.children.pagination.pages, 1)) {
   throw createError({ status: 404, statusText: 'Page Not Found', fatal: true })
 }
 
