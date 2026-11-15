@@ -32,7 +32,11 @@ const parentRoute = computed(() => route.path.split('/').slice(0, -1).join('/'))
       class="img"
       style="--w: 2; --h: 1"
     >
-      <img :src="page.cover.url" :alt="page.cover.alt ?? ''" />
+      <img
+        :src="page.cover.url"
+        :alt="page.cover.alt ?? ''"
+        fetchpriority="high"
+      />
     </a>
 
     <article class="note">
