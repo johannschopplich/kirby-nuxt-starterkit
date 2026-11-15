@@ -22,7 +22,13 @@ export interface KirbyNoteExcerptData extends KirbyNoteCardData {
 export interface KirbyNotesData extends KirbySharedPageData {
   subheadline: string
   text: string
-  children: KirbyNoteExcerptData[]
+  children: {
+    data: KirbyNoteExcerptData[]
+    pagination: {
+      page: number
+      pages: number
+    }
+  }
 }
 
 export const noteCardQuerySelects = {
@@ -39,19 +45,32 @@ export const noteCardQuerySelects = {
   },
 } satisfies KirbyQuerySchema['select']
 
-export const notesQuery: KirbyQuerySchema = {
-  query: 'page("notes")',
-  select: {
-    ...sharedQuerySelects,
-    subheadline: true,
-    text: 'page.text.kirbytext',
-    children: {
-      query: 'page.children.listed.sortBy("date", "desc")',
-      select: {
-        ...noteCardQuerySelects,
-        tags: 'page.tags.split(",")',
-        text: 'page.text.toResolvedBlocks.excerpt(280)',
+const notesPerPage = 6
+
+export function getNotesQuery({
+  tag,
+  page = 1,
+}: { tag?: string; page?: number } = {}): KirbyQuerySchema {
+  // A quote or backslash would break the KQL string literal.
+  const tagFilter = tag
+    ? `.filterBy("tags", "${tag.replace(/["\\]/g, '')}", ",")`
+    : ''
+
+  return {
+    query: 'page("notes")',
+    select: {
+      ...sharedQuerySelects,
+      subheadline: true,
+      text: 'page.text.kirbytext',
+      children: {
+        query: `page.children.listed.sortBy("date", "desc")${tagFilter}`,
+        select: {
+          ...noteCardQuerySelects,
+          tags: 'page.tags.split(",")',
+          text: 'page.text.toResolvedBlocks.excerpt(280)',
+        },
+        pagination: { limit: notesPerPage, page },
       },
     },
-  },
+  }
 }

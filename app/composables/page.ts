@@ -8,7 +8,13 @@ export function usePage<T extends Record<string, any> = Record<string, any>>() {
   return useState<T>('app.page', () => ({}) as T)
 }
 
-export function setPage<T extends Record<string, any>>(page: T) {
+export function setPage<T extends Record<string, any>>(
+  page: T,
+  options: {
+    /** Path for the canonical URL, if the route's query matters for it. */
+    path?: string
+  } = {},
+) {
   usePage().value = page
 
   const { siteUrl } = useRuntimeConfig().public
@@ -17,7 +23,7 @@ export function setPage<T extends Record<string, any>>(page: T) {
     ? `${page.title} – ${site.value.title}`
     : site.value.title
   const description = page.description || site.value.description
-  const url = joinURL(siteUrl, useRoute().path)
+  const url = joinURL(siteUrl, options.path ?? useRoute().path)
 
   useHead({
     bodyAttrs: {
