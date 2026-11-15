@@ -1,4 +1,4 @@
-import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
+import type { KirbyQuerySchema } from 'kirby-types'
 import type { KirbySharedPageData } from './page'
 import { sharedQuerySelects } from './page'
 
@@ -14,8 +14,6 @@ export interface KirbyPhotographyData extends KirbySharedPageData {
     } | null
   }[]
 }
-
-export type KirbyPhotographyResponse = KirbyQueryResponse<KirbyPhotographyData>
 
 export const photographyQuery: KirbyQuerySchema = {
   query: 'page("photography")',

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+// The page's query carries the site data on the first server render.
+await waitForPage()
+
 const site = useSite()
 const listedChildren = computed(() =>
   (site.value?.children ?? []).filter((i) => i.isListed),

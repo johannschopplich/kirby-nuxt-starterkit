@@ -1,4 +1,4 @@
-import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
+import type { KirbyQuerySchema } from 'kirby-types'
 import type { KirbySharedPageData } from './page'
 import { sharedQuerySelects } from './page'
 
@@ -13,8 +13,6 @@ export interface KirbyAlbumData extends KirbySharedPageData {
     alt: string | null
   }[]
 }
-
-export type KirbyAlbumResponse = KirbyQueryResponse<KirbyAlbumData>
 
 export function getAlbumQuery(pageId: string): KirbyQuerySchema {
   return {

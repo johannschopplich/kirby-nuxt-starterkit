@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import type { KirbyPageResponse } from '~/queries'
+import type { KirbyPageData } from '~/queries'
 import { getPageQuery } from '~/queries'
 
-const kirbyPath = useRoute().path
-const { data: pageData } = await useKql<KirbyPageResponse>(
-  getPageQuery(kirbyPath),
+const { data: pageData } = await useKqlPage<KirbyPageData>(
+  getPageQuery(useRoute().path),
 )
 
 let data = pageData.value
 
 if (!data?.result) {
-  const { data: errorPageData } = await useKql<KirbyPageResponse>(
+  const { data: errorPageData } = await useKqlPage<KirbyPageData>(
     getPageQuery('error'),
+    { key: 'page:error' },
   )
   data = errorPageData.value
   const event = useRequestEvent()

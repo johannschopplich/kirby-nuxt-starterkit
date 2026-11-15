@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { KirbyAboutResponse } from '~/queries'
+import type { KirbyAboutData } from '~/queries'
 import { getAboutQuery } from '~/queries'
 
-const { data } = await useKql<KirbyAboutResponse>(
+const { data } = await useKqlPage<KirbyAboutData>(
   getAboutQuery(useRoute().path),
 )
 

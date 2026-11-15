@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { KirbyHomeResponse } from '~/queries'
+import type { KirbyHomeData } from '~/queries'
 import { homeQuery } from '~/queries'
 
-const { data } = await useKql<KirbyHomeResponse>(homeQuery)
+const { data } = await useKqlPage<KirbyHomeData>(homeQuery)
 
 const page = data.value!.result!
 setPage(page)

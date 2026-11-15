@@ -1,8 +1,4 @@
-import type {
-  KirbyBlock,
-  KirbyQueryResponse,
-  KirbyQuerySchema,
-} from 'kirby-types'
+import type { KirbyBlock, KirbyQuerySchema } from 'kirby-types'
 import type { KirbySharedPageData } from './page'
 import { sharedQuerySelects } from './page'
 
@@ -16,8 +12,6 @@ export interface KirbyNoteData extends KirbySharedPageData {
     url: string
   } | null
 }
-
-export type KirbyNoteResponse = KirbyQueryResponse<KirbyNoteData>
 
 export function getNoteQuery(pageId: string): KirbyQuerySchema {
   return {

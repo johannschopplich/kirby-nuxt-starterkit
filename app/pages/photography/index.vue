@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { KirbyPhotographyResponse } from '~/queries'
+import type { KirbyPhotographyData } from '~/queries'
 import { photographyQuery } from '~/queries'
 
-const { data } = await useKql<KirbyPhotographyResponse>(photographyQuery)
+const { data } = await useKqlPage<KirbyPhotographyData>(photographyQuery)
 
 const page = data.value!.result!
 setPage(page)

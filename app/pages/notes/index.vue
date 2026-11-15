@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { KirbyNotesResponse } from '~/queries'
+import type { KirbyNotesData } from '~/queries'
 import { notesQuery } from '~/queries'
 
 const route = useRoute()
-const { data } = await useKql<KirbyNotesResponse>(notesQuery)
+const { data } = await useKqlPage<KirbyNotesData>(notesQuery)
 
 const page = data.value!.result!
 setPage(page)

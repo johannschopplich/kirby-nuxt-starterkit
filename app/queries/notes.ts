@@ -1,4 +1,4 @@
-import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
+import type { KirbyQuerySchema } from 'kirby-types'
 import type { KirbySharedPageData } from './page'
 import { sharedQuerySelects } from './page'
 
@@ -19,8 +19,6 @@ export interface KirbyNotesData extends KirbySharedPageData {
   text: string
   children: KirbyNoteCardData[]
 }
-
-export type KirbyNotesResponse = KirbyQueryResponse<KirbyNotesData>
 
 export const notesQuery: KirbyQuerySchema = {
   query: 'page("notes")',

@@ -1,4 +1,4 @@
-import type { KirbyQueryResponse, KirbyQuerySchema } from 'kirby-types'
+import type { KirbyQuerySchema } from 'kirby-types'
 
 export interface KirbySharedPageData {
   id: string
@@ -9,8 +9,6 @@ export interface KirbySharedPageData {
 export interface KirbyPageData extends KirbySharedPageData {
   text: string
 }
-
-export type KirbyPageResponse = KirbyQueryResponse<KirbyPageData>
 
 export const sharedQuerySelects = {
   id: true,

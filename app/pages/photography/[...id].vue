@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { KirbyAlbumResponse } from '~/queries'
+import type { KirbyAlbumData } from '~/queries'
 import { getAlbumQuery } from '~/queries'
 
-const { data } = await useKql<KirbyAlbumResponse>(
+const { data } = await useKqlPage<KirbyAlbumData>(
   getAlbumQuery(useRoute().path),
 )
 

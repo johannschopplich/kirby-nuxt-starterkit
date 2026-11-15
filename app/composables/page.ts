@@ -1,3 +1,4 @@
+import type { HookResult } from '@nuxt/schema'
 import { joinURL } from 'ufo'
 
 /**
@@ -42,5 +43,31 @@ export function setPage<T extends Record<string, any>>(page: T) {
       twitterTitle: title,
       twitterDescription: description,
     })
+  }
+
+  // Resolve components that depend on the full page data.
+  const nuxtApp = useNuxtApp()
+  nuxtApp._pageDependenciesRendered = true
+  return nuxtApp.callHook('page-dependencies:rendered')
+}
+
+export async function waitForPage() {
+  if (import.meta.client) return
+
+  const nuxtApp = useNuxtApp()
+  const error = useError()
+
+  return new Promise<void>((resolve) => {
+    if (error.value || nuxtApp._pageDependenciesRendered) return resolve()
+
+    nuxtApp.hooks.hookOnce('page-dependencies:rendered', () => resolve())
+    nuxtApp.hooks.hookOnce('app:error', () => resolve())
+    nuxtApp.hooks.hookOnce('vue:error', () => resolve())
+  })
+}
+
+declare module '#app' {
+  interface RuntimeNuxtHooks {
+    'page-dependencies:rendered': () => HookResult
   }
 }
